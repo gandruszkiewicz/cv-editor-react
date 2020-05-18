@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button} from 'antd';
+import LayoutComponent from './components/Layout/LayoutComponent'
 import './App.less';
 
 function App() {
   return (
     <div className="App">
-      <Button type="primary">Button</Button>
+      <LayoutComponent/>
     </div>
   );
 }
