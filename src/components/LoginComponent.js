@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Input, Button,Checkbox , Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
+import {authenticationService} from '../services/authentication.service'
+
 
 class LoginComponent extends Component {
 
@@ -15,6 +17,7 @@ class LoginComponent extends Component {
         // here will go call to authorization service. On 200 token will be stored in localStorage
         // After success user will be redirected to HomePage
         console.log(`Submitted data: email ${this.state.email} password ${this.state.password}`);
+        authenticationService.login(this.state.email, this.state.password);
     }
 
     handleChange = (e) =>{
@@ -27,8 +30,7 @@ class LoginComponent extends Component {
     render(){
         return(
         <Row style={{'margin-top': '15%'}}>
-            <Col span={8}></Col>
-                <Col span={8}>
+                <Col className='login-col'>
                     <Form
                     className="login-form"
                     initialValues={{
@@ -80,7 +82,6 @@ class LoginComponent extends Component {
                         </Form.Item>
                     </Form>
                 </Col>
-            <Col span={8}></Col>
           </Row>
         )
     }
