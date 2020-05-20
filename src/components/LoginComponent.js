@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Form, Input, Button,Checkbox , Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-import {authenticationService} from '../services/authentication.service'
+import {authenticationService} from '../services/authentication.service';
+
 
 
 class LoginComponent extends Component {
-
     state = {
         email: '',
         password: '',
@@ -14,10 +14,12 @@ class LoginComponent extends Component {
 
 
     onFinish = (e) => {
-        // here will go call to authorization service. On 200 token will be stored in localStorage
-        // After success user will be redirected to HomePage
-        console.log(`Submitted data: email ${this.state.email} password ${this.state.password}`);
-        authenticationService.login(this.state.email, this.state.password);
+        authenticationService.login(this.state.email, this.state.password)
+            .then(result =>{
+                if(result){
+                    this.props.history.push("/");
+                }
+            });
     }
 
     handleChange = (e) =>{

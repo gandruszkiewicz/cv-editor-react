@@ -1,25 +1,35 @@
 import axios from 'axios'
-import { BehaviorSubject } from 'rxjs';
+import ApiRouter from '../helpers/ApiRouter'
 
-const currentUserSubject = 
-new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
-const apiRoot = "https://localhost:44345/api";
-const version = "/v1";
-const authenticationEndpoint = apiRoot + version + "/identity";
+
+const apiController = "identity";
 
 export const authenticationService = {
     login,
-    currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
+    checkIfUserExist
 }
 
 function login(email, password){
-    let url = authenticationEndpoint +"/login"
+    let url = ApiRouter.getUrlForRequest(apiController,"login")
     return axios.post(url,{email: email, password: password})
         .then(response =>{
-           
-            localStorage.setItem("currentUser",JSON.stringify("bearer "+response.data.token));
-            currentUserSubject.next(response.token);
-            return response.token;
+            let user = {
+                userId : response.data.userId,
+                token : response.data.token
+            }
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify(user));
+            return user;
         });
 }
+
+function checkIfUserExist(userid){
+    let url = ApiRouter.getUrlForRequest(apiController,'usercheck?userId='+userid)
+    return axios.get(url)
+        .then(response => {
+            return response;
+        })
+}
+
+export default authenticationService;
