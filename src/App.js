@@ -1,13 +1,18 @@
-import React from 'react';
-import LayoutComponent from './components/Layout/LayoutComponent'
+import React, { Component } from 'react';
 import './App.less';
 
-function App() {
-  return (
-    <div className="App">
-      <LayoutComponent/>
-    </div>
-  );
+import LayoutComponent from './components/Layout/LayoutComponent';
+
+class App extends Component {
+
+  render(){
+    return (
+      <div className="App">
+        <LayoutComponent/>
+      </div>
+    );
+  }
+
 }
 
 export default App;

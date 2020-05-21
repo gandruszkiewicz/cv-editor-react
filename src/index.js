@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import LoginComponent from './components/Authentication/LoginComponent';
+import PrivateRouter from './helpers/PrivateRouter'
+import RegistrationComponent from './components/Authentication/RegistrationComponent';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <PrivateRouter exact path='/' component={App}/>
+        <Route exact path='/login' component={LoginComponent}/>
+        <Route exact path='/register' component={RegistrationComponent}/>
+      </Switch>
+    </BrowserRouter>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
