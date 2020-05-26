@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import {authenticationService} from '../../services/authentication.service';
+
 import { AuthenticationForm } from './AuthenticationForm';
-import { useHistory  } from 'react-router-dom'
+
+import { connect } from 'react-redux';
+import { login } from '../../actions/authentication.action'
 
 
+class LoginComponent extends Component {
+    
 
-const LoginComponent = () => {
-
-    let history = useHistory();
-
-    const onFinish = (e) => {
-        authenticationService.login(e.email, e.password)
-            .then(result =>{
-                if(result){
-                    history.push("/");
-                }
-            });
+    onFinish = (e) => {
+        this.props.Login(e.email,e.password);
+        
+        this.props.history.push('/')
     }
 
-    return(
-        <AuthenticationForm 
-            onFinish ={onFinish}
-            submitButtonValue = {"Login"}
-            displayRegister = {"visible"}
-            loginSection = {"unset"}
-        />
-    )
-    
+    render(){
+        return(
+            <AuthenticationForm 
+                onFinish ={this.onFinish}
+                submitButtonValue = {"Login"}
+                displayRegister = {"visible"}
+                loginSection = {"unset"}
+            />
+        )
+    }
 }
-export default LoginComponent;
+
+const mapStateToProps = (state) =>{
+    return{
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        Login: (email,password) => {dispatch(login(email, password))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

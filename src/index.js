@@ -9,15 +9,23 @@ import LoginComponent from './components/Authentication/LoginComponent';
 import PrivateRouter from './helpers/PrivateRouter'
 import RegistrationComponent from './components/Authentication/RegistrationComponent';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { rootReducer } from './reducers/rootReducer'
+
+const store = createStore(rootReducer);
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <PrivateRouter exact path='/' component={App}/>
-        <Route exact path='/login' component={LoginComponent}/>
-        <Route exact path='/register' component={RegistrationComponent}/>
-      </Switch>
-    </BrowserRouter>
+    <Provider store = {store}>
+      <BrowserRouter>
+        <Switch>
+          <PrivateRouter exact path='/' component={App}/>
+          <Route exact path='/login' component={LoginComponent}/>
+          <Route exact path='/register' component={RegistrationComponent}/>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
     
   </React.StrictMode>,
   document.getElementById('root')
