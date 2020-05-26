@@ -4,21 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import LoginComponent from './components/Authentication/LoginComponent';
-import PrivateRouter from './helpers/PrivateRouter'
-import RegistrationComponent from './components/Authentication/RegistrationComponent';
+import { store } from './helpers/store';
+import { Provider } from 'react-redux';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <PrivateRouter exact path='/' component={App}/>
-        <Route exact path='/login' component={LoginComponent}/>
-        <Route exact path='/register' component={RegistrationComponent}/>
-      </Switch>
-    </BrowserRouter>
-    
+    <Provider store = {store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
