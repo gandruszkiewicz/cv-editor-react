@@ -1,43 +1,38 @@
 import React, { Component } from 'react';
-
-
 import { AuthenticationForm } from './AuthenticationForm';
-
 import { connect } from 'react-redux';
-import { login } from '../../actions/authentication.action'
-
+import { auhenticationActions } from '../../actions/authentication.action'
 
 class LoginComponent extends Component {
-    
+    constructor(props){
+        super(props);
 
-    onFinish = (e) => {
-        this.props.Login(e.email,e.password);
-        
-        this.props.history.push('/')
+        this.handleFinish = this.handleFinish.bind(this);
+    }
+
+    handleFinish = (e) => {
+        const { dispatch } = this.props;
+        dispatch(auhenticationActions.login(e.email, e.password));
     }
 
     render(){
         return(
-            <AuthenticationForm 
-                onFinish ={this.onFinish}
+            <div>
+                <AuthenticationForm 
+                onFinish ={this.handleFinish}
                 submitButtonValue = {"Login"}
                 displayRegister = {"visible"}
                 loginSection = {"unset"}
-            />
+                />
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) =>{
     return{
-        user: state.user
+        state: state
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        Login: (email,password) => {dispatch(login(email, password))}
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default connect(mapStateToProps)(LoginComponent);

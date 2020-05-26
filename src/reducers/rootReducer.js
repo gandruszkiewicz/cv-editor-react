@@ -1,27 +1,10 @@
-import {authenticationService} from '../services/authentication.service';
+import { combineReducers } from 'redux';
 
-const initState= {
-    user: null
-}
+import { authentication } from './authentication.reducer';
+import { alert } from './alert.reducer';
 
-export const rootReducer = (state = initState, action) => {
-    if(action.type === "AUTHENTICATION_LOGIN"){
-        
-        authenticationService.login(action.email, action.password)
-            .then(result =>{
-  
-                    let user = {
-                        token: result.token,
-                        userId: result.userId
-                    };
-                    return {
-                        ...state,
-                        user: user
-                    };
-                
-            });
-    }
-    return state;
-}
-
+const rootReducer = combineReducers({
+    authentication,
+    alert
+})
 export default rootReducer;
