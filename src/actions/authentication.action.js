@@ -10,17 +10,26 @@ export const auhenticationActions = {
 }
 
 function login(email, password){
+    
     return dispatch => {
         dispatch(request({email}));
         authenticationService.login(email, password)
             .then(
                 user => {
                     dispatch(success(user));
+                    localStorage.setItem(
+                        "currentUser",
+                        JSON.stringify(user.data));
                     history.push('/');
                 },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+                error =>{
+                    var errors = '';
+                    new Array(error.response.data.errors)
+                        .map(message => errors +=`${message} \n`);
+
+                    dispatch(failure(errors));
+                    dispatch(alertActions.error(errors));
+                    dispatch(alertActions.clear(errors));
                 }
             )
     };
@@ -40,8 +49,12 @@ function register(email, password){
                     history.push('/');
                 },
                 error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+                    var errors = error.response.data.errors;
+                    // new Array(error.response.data.errors)
+                    //     .map(message => errors +=`${message}`+ '\n');
+                    dispatch(failure(errors));
+                    dispatch(alertActions.error(errors));
+                    dispatch(alertActions.clear(errors));
                 }
             )
     };

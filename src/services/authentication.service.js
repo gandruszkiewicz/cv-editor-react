@@ -30,11 +30,8 @@ function checkIfUserExist(userid){
 
 function postAuthentication(url,body){
     return axios.post(url,body)
-        .then(user =>{
-            localStorage.setItem(
-                "currentUser",
-                JSON.stringify(user.data));
-            return user.data;
+        .then(response =>{
+            return response;
         });
 }
 

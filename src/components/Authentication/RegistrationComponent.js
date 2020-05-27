@@ -5,6 +5,7 @@ import { AuthenticationForm } from './AuthenticationForm';
 import { useHistory  } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { auhenticationActions } from '../../actions/authentication.action'
+import AlertNotification from '../Alerts/AlertNotification'; 
 
 
 
@@ -21,13 +22,17 @@ class RegistrationComponent extends Component{
     }
 
     render(){
+        const errorMessage = this.props.state.alertReducer.error;
         return(
-            <AuthenticationForm 
+            <div>
+                <AlertNotification errorMessage = {errorMessage}/>
+                <AuthenticationForm 
                 onFinish ={this.handleFinish}
                 submitButtonValue = {"Register"}
                 displayRegister = {"hidden"}
                 loginSection = {"none"}
-            />
+                />
+            </div>
         )
     }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { AuthenticationForm } from './AuthenticationForm';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { auhenticationActions } from '../../actions/authentication.action'
+import AlertNotification from '../Alerts/AlertNotification';
 
 class LoginComponent extends Component {
     constructor(props){
@@ -14,10 +15,12 @@ class LoginComponent extends Component {
         const { dispatch } = this.props;
         dispatch(auhenticationActions.login(e.email, e.password));
     }
-
+    
     render(){
+        const errorMessage = this.props.state.alertReducer.error;
         return(
             <div>
+                <AlertNotification errorMessage = {errorMessage}/>
                 <AuthenticationForm 
                 onFinish ={this.handleFinish}
                 submitButtonValue = {"Login"}
