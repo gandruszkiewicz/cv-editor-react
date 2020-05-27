@@ -1,6 +1,6 @@
 import { authenticationConstants } from '../constants/authentication.constants';
 
-let user = JSON.parse(localStorage.getItem('user'));
+let user = JSON.parse(localStorage.getItem('currentUser'));
 const initialState = user ? { loggedIn: true, user } : {};
 
 export function authentication(state = initialState, action) {
@@ -8,12 +8,12 @@ export function authentication(state = initialState, action) {
     case authenticationConstants.LOGIN_REQUEST:
       return {
         loggingIn: true,
-        user: action.user
+        user: action.user.data
       };
     case authenticationConstants.LOGIN_SUCCESS:
       return {
         loggedIn: true,
-        user: action.user
+        user: action.user.data
       };
     case authenticationConstants.LOGIN_FAILURE:
       return {};

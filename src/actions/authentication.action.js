@@ -6,7 +6,8 @@ import history from '../helpers/history';
 
 export const auhenticationActions = {
     login,
-    register
+    register,
+    logout
 }
 
 function login(email, password){
@@ -23,9 +24,7 @@ function login(email, password){
                     history.push('/');
                 },
                 error =>{
-                    var errors = '';
-                    new Array(error.response.data.errors)
-                        .map(message => errors +=`${message} \n`);
+                    var errors = error.response.data.errors;
 
                     dispatch(failure(errors));
                     dispatch(alertActions.error(errors));
@@ -50,8 +49,6 @@ function register(email, password){
                 },
                 error => {
                     var errors = error.response.data.errors;
-                    // new Array(error.response.data.errors)
-                    //     .map(message => errors +=`${message}`+ '\n');
                     dispatch(failure(errors));
                     dispatch(alertActions.error(errors));
                     dispatch(alertActions.clear(errors));
@@ -62,4 +59,14 @@ function register(email, password){
     function request(user) { return { type: authenticationConstants.LOGIN_REQUEST, user } }
     function success(user) { return { type: authenticationConstants.LOGIN_SUCCESS, user } }
     function failure(error) { return { type: authenticationConstants.LOGIN_FAILURE, error } }
+}
+
+function logout(){
+    return dispatch => {
+        dispatch(logOut());
+        localStorage.removeItem('currentUser');
+        history.push('/');
+    };
+
+    function logOut() { return { type: authenticationConstants.LOGOUT } }
 }
