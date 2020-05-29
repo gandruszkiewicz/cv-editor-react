@@ -12,7 +12,7 @@ import {
 } from '@ant-design/icons';
 
 import { connect } from 'react-redux';
-import { auhenticationActions } from '../../actions/authentication.action'
+import { authenticationActions } from '../../actions/authentication/authentication.action'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -31,7 +31,7 @@ class LayoutComponent extends Component {
 
       handleClick(){
         const { dispatch } = this.props;
-        dispatch(auhenticationActions.logout());
+        dispatch(authenticationActions.logout());
       }
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AuthenticationForm } from './AuthenticationForm';
 import { connect, useSelector } from 'react-redux';
-import { auhenticationActions } from '../../actions/authentication.action'
+import { authenticationActions } from '../../actions/authentication/authentication.action'
 import AlertNotification from '../Alerts/AlertNotification';
 
 class LoginComponent extends Component {
@@ -13,7 +13,7 @@ class LoginComponent extends Component {
 
     handleFinish = (e) => {
         const { dispatch } = this.props;
-        dispatch(auhenticationActions.login(e.email, e.password));
+        dispatch(authenticationActions.login(e.email, e.password));
     }
     
     render(){

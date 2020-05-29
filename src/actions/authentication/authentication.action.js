@@ -1,10 +1,10 @@
-import { authenticationService } from '../services/authentication.service';
-import { authenticationConstants } from '../constants/authentication.constants';
-import { alertActions } from './alert.actions';
-import history from '../helpers/history';
+import { authenticationService } from '../../services/authentication.service';
+import { alertActions } from './../alert.actions';
+import history from '../../helpers/history';
+import { authenticationResult } from '../authentication/authneticationResult.action';
 
 
-export const auhenticationActions = {
+export const authenticationActions = {
     login,
     register,
     logout
@@ -13,11 +13,11 @@ export const auhenticationActions = {
 function login(email, password){
     
     return dispatch => {
-        dispatch(request({email}));
+        dispatch(authenticationResult.request({email}));
         authenticationService.login(email, password)
             .then(
                 user => {
-                    dispatch(success(user));
+                    dispatch(authenticationResult.success(user));
                     localStorage.setItem(
                         "currentUser",
                         JSON.stringify(user.data));
@@ -26,47 +26,37 @@ function login(email, password){
                 error =>{
                     var errors = error.response.data.errors;
 
-                    dispatch(failure(errors));
+                    dispatch(authenticationResult.failure(errors));
                     dispatch(alertActions.error(errors));
                     dispatch(alertActions.clear(errors));
                 }
             )
     };
-
-    function request(user) { return { type: authenticationConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: authenticationConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: authenticationConstants.LOGIN_FAILURE, error } }
 }
 
 function register(email, password){
     return dispatch => {
-        dispatch(request({email}));
+        dispatch(authenticationResult.request({email}));
         authenticationService.register(email, password)
             .then(
                 user => {
-                    dispatch(success(user));
+                    dispatch(authenticationResult.success(user));
                     history.push('/');
                 },
                 error => {
                     var errors = error.response.data.errors;
-                    dispatch(failure(errors));
+                    dispatch(authenticationResult.failure(errors));
                     dispatch(alertActions.error(errors));
                     dispatch(alertActions.clear(errors));
                 }
             )
     };
-
-    function request(user) { return { type: authenticationConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: authenticationConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: authenticationConstants.LOGIN_FAILURE, error } }
 }
 
 function logout(){
     return dispatch => {
-        dispatch(logOut());
+        dispatch(authenticationResult.logOut());
         localStorage.removeItem('currentUser');
         history.push('/');
     };
-
-    function logOut() { return { type: authenticationConstants.LOGOUT } }
 }

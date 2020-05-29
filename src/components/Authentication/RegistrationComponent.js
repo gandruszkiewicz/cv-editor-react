@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import {authenticationService} from '../../services/authentication.service';
 import { AuthenticationForm } from './AuthenticationForm';
-import { useHistory  } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { auhenticationActions } from '../../actions/authentication.action'
+import { authenticationActions } from '../../actions/authentication/authentication.action'
 import AlertNotification from '../Alerts/AlertNotification'; 
 
 
@@ -18,7 +16,7 @@ class RegistrationComponent extends Component{
 
     handleFinish = (e) => {
         const { dispatch } = this.props;
-        dispatch(auhenticationActions.register(e.email, e.password));
+        dispatch(authenticationActions.register(e.email, e.password));
     }
 
     render(){
