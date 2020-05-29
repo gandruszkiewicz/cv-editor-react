@@ -1,26 +1,13 @@
 import React,{Component} from 'react';
 import {
-  Layout,
-  Menu,
-  Dropdown,
-  Button
+  Layout
  } from 'antd';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  LogoutOutlined
-} from '@ant-design/icons';
 
-import { connect } from 'react-redux';
-import { authenticationActions } from '../../actions/authentication/authentication.action'
+import MenuLayoutComponent  from './MenuLayoutComponent';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 class LayoutComponent extends Component {
-    constructor(props){
-      super(props)
-      this.handleClick = this.handleClick.bind(this)
-    }
     state = {
         collapsed: false
       };
@@ -29,45 +16,12 @@ class LayoutComponent extends Component {
         this.setState({ collapsed });
       };
 
-      handleClick(){
-        const { dispatch } = this.props;
-        dispatch(authenticationActions.logout());
-      }
-
-
-
-      render() {
-        const menu = (
-          <Menu>
-            <Menu.Item key="1" onClick={this.handleClick} icon={<LogoutOutlined />}>
-              Wyloguj się
-            </Menu.Item>
-          </Menu>
-        );
-        const userDropDownBtnTxt = 
-          this.props.state
-          .authentication.user.userName.slice(0,1);
-        
+      render() {        
         return (
         <Layout style={{ minHeight: '100vh' }}>
-          <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-            <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              <Menu.Item key="1" icon={<PieChartOutlined />}>
-                Add Resume
-              </Menu.Item>
-              <Menu.Item key="2" icon={<DesktopOutlined />}>
-                Your resumes
-              </Menu.Item>
-            </Menu>
-          </Sider>
+          <MenuLayoutComponent/>
           <Layout className="site-layout">
-            <Header className="site-layout-background" style={{ padding: 0, alignSelf: 'flex-end', marginRight: '3%' }}>
-            <Dropdown overlay={menu}>
-              <Button type = 'primary' shape='circle'>
-               {userDropDownBtnTxt}
-              </Button>
-          </Dropdown>
+            <Header className="site-layout-background" style={{ padding: 0 }}>
             </Header>
             <Content style={{ margin: '0 16px' }}>
               <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
@@ -81,10 +35,4 @@ class LayoutComponent extends Component {
     }
 }
 
-const mapStateToProps = (state) =>{
-  return {
-    state: state
-  }
-}
-
-export default connect(mapStateToProps)(LayoutComponent);
+export default LayoutComponent;
