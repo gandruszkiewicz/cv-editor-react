@@ -12,7 +12,10 @@ function getUrlForService(apiController) {
     return `${base}/${apiController}`;
 }
 
-function getUrlForRequest(apiController, requestEndpoint) {
+function getUrlForRequest(apiController, requestEndpoint = null) {
+    if(requestEndpoint === null){
+        return `${base}/${apiController}`;
+    }
     return `${base}/${apiController}/${requestEndpoint}`;
 }
 

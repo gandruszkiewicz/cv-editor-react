@@ -2,24 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Steps, Button, message } from 'antd';
 import LayoutComponent from '../Layout/LayoutComponent';
-
-const { Step } = Steps;
-
-const steps = [
-    {
-      title: 'First',
-      content: 'First-content',
-    },
-    {
-      title: 'Second',
-      content: 'Second-content',
-    },
-    {
-      title: 'Last',
-      content: 'Last-content',
-    },
-  ];
-  
+import PersonalDataFormComponent from './PersonalDataFormComponent';  
 
 class AddResumeComponent extends Component {
     
@@ -41,9 +24,30 @@ class AddResumeComponent extends Component {
       }
 
     render(){
+
+        const { Step } = Steps;
+
+        const steps = [
+            {
+            id:1,
+            title: 'Personal data',
+            content: <PersonalDataFormComponent state = {this.props.state.resume}/>,
+            },
+            {
+            id: 2,
+            title: 'Second',
+            content:  <></>,
+            },
+            {
+            id: 3,
+            title: 'Last',
+            content: <></>,
+            },
+        ];
+
         const { current } = this.state;
         return(
-            <div>
+            <div>           
             <Steps current={current}>
               {steps.map(item => (
                 <Step key={item.title} title={item.title} />
