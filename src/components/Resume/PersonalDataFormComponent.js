@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input, Button,Checkbox , Row, Col } from 'antd';
+import { Form, Input, Button , Row, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import resumeActions from '../../actions/resume/resume.action';
 
 import {connect} from 'react-redux';
-
-
 
 export class PersonalDataFormComponent extends Component {
     constructor(props){
@@ -13,21 +11,25 @@ export class PersonalDataFormComponent extends Component {
         this.handleFinish = this.handleFinish.bind(this);
     }
     state = this.props.state.resume;
-
+    
     handleChange = (e) =>{
         this.setState({
             [e.target.id]: e.target.value
         })
-        console.log(this.state);
     }
 
     handleFinish(){
-        console.log(this.props);
         const { dispatch } = this.props;
         dispatch(resumeActions.addResume(this.state));
     }
 
+    componentWillUnmount(){
+        const { dispatch } = this.props;
+        dispatch(resumeActions.updateStore(this.state));
+    }
+
     render(){
+        const resume = this.state;
         return(
         <Row>
                 <Col className='login-col'>
@@ -40,6 +42,7 @@ export class PersonalDataFormComponent extends Component {
                     >
                         <Form.Item onChange ={this.handleChange}
                             name="FirstName"
+                            initialValue = {resume.FirstName}
                             rules={[
                             {
                                 required: true,
@@ -47,10 +50,14 @@ export class PersonalDataFormComponent extends Component {
                             },
                             ]}
                         >
-                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="First name" />
+                            <Input 
+                                prefix={<UserOutlined className="site-form-item-icon" />} 
+                                placeholder="First name"
+                            />
                         </Form.Item>
                         <Form.Item onChange ={this.handleChange}
                             name="LastName"
+                            initialValue = {resume.LastName}
                             rules={[
                             {
                                 required: true,
@@ -66,6 +73,7 @@ export class PersonalDataFormComponent extends Component {
                         </Form.Item>
                         <Form.Item onChange ={this.handleChange}
                             name="Email"
+                            initialValue = {resume.Email}
                             rules={[
                             {
                                 required: true,
@@ -81,6 +89,7 @@ export class PersonalDataFormComponent extends Component {
                         </Form.Item>
                         <Form.Item onChange ={this.handleChange}
                             name="Address"
+                            initialValue = {resume.Address}
                             rules={[
                             {
                                 required: true,
@@ -97,6 +106,7 @@ export class PersonalDataFormComponent extends Component {
 
                         <Form.Item onChange ={this.handleChange}
                             name="SumUp"
+                            initialValue = {resume.SumUp}
                             rules={[
                             {
                                 required: false

@@ -3,7 +3,14 @@ import {resumeResult} from './resumeResult.action'
 import { alertActions } from './../alert.actions';
 
 export const resumeActions = {
-    addResume
+    addResume,
+    updateStore
+}
+
+function updateStore(resume){
+    return dispatch => {
+        dispatch(resumeResult.updateStore({resume}));
+    }
 }
 
 function addResume(resume){

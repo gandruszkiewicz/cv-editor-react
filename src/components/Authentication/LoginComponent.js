@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AuthenticationForm } from './AuthenticationForm';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { authenticationActions } from '../../actions/authentication/authentication.action'
 import AlertNotification from '../Alerts/AlertNotification';
 

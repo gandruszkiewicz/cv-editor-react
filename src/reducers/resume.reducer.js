@@ -14,6 +14,8 @@ const initState = {
 
    export function resume(state = initState,action){
     switch (action.type) {
+        case resumeConstants.RESUME_STORE_UPDATE:
+          return action.parameters.resume;
         case resumeConstants.RESUME_POST_REQUEST:
           return action.parameters.resume;
         case resumeConstants.RESUME_POST_SUCCESS:

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Steps, Button, message } from 'antd';
 import LayoutComponent from '../Layout/LayoutComponent';
 import PersonalDataFormComponent from './PersonalDataFormComponent';  
+import MultipleFormsComponent from '../MultipleFormsComponent';
 
 class AddResumeComponent extends Component {
     
@@ -35,8 +36,8 @@ class AddResumeComponent extends Component {
             },
             {
             id: 2,
-            title: 'Second',
-            content:  <></>,
+            title: 'Experience',
+            content:  <MultipleFormsComponent/>,
             },
             {
             id: 3,
