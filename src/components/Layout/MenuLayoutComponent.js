@@ -3,6 +3,7 @@ import { Menu, Dropdown, Button } from 'antd';
 import { MenuOutlined, LogoutOutlined } from '@ant-design/icons';
 import { authenticationActions } from '../../actions/authentication/authentication.action';
 import { connect } from 'react-redux';
+import {Link, NavLink} from 'react-router-dom'
 
 const { SubMenu } = Menu;
 
@@ -31,7 +32,12 @@ class MenuLayoutComponent extends Component {
         <>
             <Menu onClick={this.handleClick} mode="horizontal">
                 <SubMenu onHover = {this.handleMenuClick}  icon={<MenuOutlined />} title="Menu" style = {{'margin-left': '1%'}}>
-                    <Menu.Item key="setting:1">Add Resume</Menu.Item>
+
+                    <Menu.Item key="setting:1">
+                        <NavLink to="/add-resume">
+                            Add Resume
+                        </NavLink>
+                    </Menu.Item>
                     <Menu.Item key="setting:2">Your resumes</Menu.Item>
                 </SubMenu>
                 <Menu.Item 
