@@ -21,7 +21,7 @@ export class AuthenticationForm extends Component {
     render(){
         return(
         <Row style={{'margin-top': '15%'}}>
-                <Col className='login-col'>
+                <Col className='centerized-col'>
                     <Form
                     className="login-form"
                     initialValues={{

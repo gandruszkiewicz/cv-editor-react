@@ -31,8 +31,8 @@ export class PersonalDataFormComponent extends Component {
     render(){
         const resume = this.state;
         return(
-        <Row>
-                <Col className='login-col'>
+        <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
+                <Col className="gutter-row centerized-col" span={12}>
                     <Form
                     onFinish = {this.handleFinish}
                     className="personal-data-form"
