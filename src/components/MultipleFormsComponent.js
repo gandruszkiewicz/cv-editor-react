@@ -29,13 +29,18 @@ export class MultipleFormsComponent extends Component {
             <>
                 {
                     this.state.components.map((item) => (
-                        <this.props.component  key={item.id}/>
+                        <div style = {{marginLeft: '2%',marginRight: '2%', border: '0.5px solid darkgrey', borderRadius:'10px'}}>
+                            <div className = 'margin-all'>
+                                <this.props.component  key={item.id}/>
+                            </div>
+                        </div>
                     ))
                 }
                 <Button
                     type="primary"
                     icon={<PlusCircleOutlined />}
                     onClick={this.addChildComponent}
+                    className = 'margin-vertical'
                     >
                     Add position
                 </Button>
