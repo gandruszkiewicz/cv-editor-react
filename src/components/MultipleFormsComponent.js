@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { PlusCircleOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { PlusCircleOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
+import { Button, Col } from 'antd';
+import CollapsedComponent from './CollapsedComponent';
 
 export class MultipleFormsComponent extends Component {
     constructor(props){
@@ -8,6 +9,7 @@ export class MultipleFormsComponent extends Component {
         
         this.addChildComponent = 
             this.addChildComponent.bind(this);
+        this.handleCollapse = this.handleCollapse.bind(this);
     }
     
     state = {
@@ -20,18 +22,53 @@ export class MultipleFormsComponent extends Component {
         this.setState({
             components: [
                 ...this.state.components,
-                {id: id+1}
+                {id: id+1, collapse: false}
             ]
         });
     }
+
+    handleCollapse(e){
+        var component = this.state.components.find(x => x.id == e.currentTarget.id);
+        component.collapse = !component.collapse;
+        this.setState({
+            ...this.state,
+            component
+        })
+    }
+
     render(){
         return(
             <>
                 {
                     this.state.components.map((item) => (
-                        <div style = {{marginLeft: '2%',marginRight: '2%', border: '0.5px solid darkgrey', borderRadius:'10px'}}>
+                        <div className = 'multiple-form-layout'>
                             <div className = 'margin-all'>
-                                <this.props.component  key={item.id}/>
+                                {item.collapse && 
+                                    <div>
+                                        <Col className="gutter-row" span={1} offset ={22}>
+                                            <Button type='text' 
+                                                    className='arrow-button' 
+                                                    onClick={this.handleCollapse}
+                                                    id = {item.id}>
+                                                <DownOutlined />
+                                            </Button>
+                                        </Col>
+                                        <this.props.component  key={item.id}/>
+                                    </div>                              
+                                }
+                                {!item.collapse &&
+                                    <div>
+                                        <Col className="gutter-row" span={1} offset ={22}>
+                                            <Button type='text' 
+                                                    className='arrow-button' 
+                                                    onClick={this.handleCollapse}
+                                                    id = {item.id}>
+                                                <UpOutlined/>
+                                            </Button>
+                                        </Col>
+                                        <CollapsedComponent/>
+                                    </div>
+                                }
                             </div>
                         </div>
                     ))

@@ -41,7 +41,7 @@ export class ExperienceComponent extends Component {
                                     />
                                 </Form.Item>
                         </Col>
-                        <Col className="gutter-row" span={6} offset={8}>
+                        <Col className="gutter-row" span={6} offset={6}>
                             <Form.Item
                                     name="City"
                                     rules={[
