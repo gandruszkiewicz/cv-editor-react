@@ -4,6 +4,7 @@ import { Steps, Button, message } from 'antd';
 import LayoutComponent from '../Layout/LayoutComponent';
 import PersonalDataFormComponent from './PersonalDataFormComponent';  
 import MultipleFormsComponent from '../MultipleFormsComponent';
+import ExperienceComponent from './ExperienceComponent';
 
 class AddResumeComponent extends Component {
     
@@ -37,7 +38,7 @@ class AddResumeComponent extends Component {
             {
             id: 2,
             title: 'Experience',
-            content:  <MultipleFormsComponent/>,
+            content:  <MultipleFormsComponent component = {ExperienceComponent}/>,
             },
             {
             id: 3,

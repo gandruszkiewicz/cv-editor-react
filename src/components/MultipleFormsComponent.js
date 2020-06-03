@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ExperienceComponent from './Resume/ExperienceComponent';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
@@ -7,37 +6,36 @@ export class MultipleFormsComponent extends Component {
     constructor(props){
         super(props);
         
-        this.addChildExperienceComponent = 
-            this.addChildExperienceComponent.bind(this);
+        this.addChildComponent = 
+            this.addChildComponent.bind(this);
     }
+    
     state = {
-        experiences : [
-            {id: 1}
+        components : [
         ]
     }
 
-    addChildExperienceComponent(e){
-        var id = this.state.experiences[this.state.experiences.length-1].id
+    addChildComponent(e){
+        var id = this.state.components.length
         this.setState({
-            experiences: [
-                ...this.state.experiences,
+            components: [
+                ...this.state.components,
                 {id: id+1}
             ]
-        }
-        );
+        });
     }
     render(){
         return(
             <>
                 {
-                    this.state.experiences.map((item) => (
-                        <ExperienceComponent key={item.id}/>
+                    this.state.components.map((item) => (
+                        <this.props.component  key={item.id}/>
                     ))
                 }
                 <Button
                     type="primary"
                     icon={<PlusCircleOutlined />}
-                    onClick={this.addChildExperienceComponent}
+                    onClick={this.addChildComponent}
                     >
                     Add position
                 </Button>
