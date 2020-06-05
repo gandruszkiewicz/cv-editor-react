@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PlusCircleOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Button, Col } from 'antd';
 import CollapsedComponent from './CollapsedComponent';
+import { connect } from 'react-redux';
 
 export class MultipleFormsComponent extends Component {
     constructor(props){
@@ -53,7 +54,7 @@ export class MultipleFormsComponent extends Component {
                                                 <DownOutlined />
                                             </Button>
                                         </Col>
-                                        <this.props.component  key={item.id}/>
+                                        <this.props.component  state = {this.props.state} key={item.id}/>
                                     </div>                              
                                 }
                                 {!item.collapse &&
@@ -86,4 +87,10 @@ export class MultipleFormsComponent extends Component {
     }
 }
 
-export default MultipleFormsComponent;
+const mapStateToProps = (state) =>{
+    return{
+        state: state
+    }
+}
+
+export default connect(mapStateToProps)(MultipleFormsComponent);
