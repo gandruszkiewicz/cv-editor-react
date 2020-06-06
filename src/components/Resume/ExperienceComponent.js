@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Form, Input, Checkbox , Row, Col, DatePicker } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import RichEditorComponent from '../RichEditorComponent';
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+import {experienceActions} from '../../actions/experience/experience.action'
 import { connect } from 'react-redux';
+
+import moment from 'moment';
 
 export class ExperienceComponent extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ export class ExperienceComponent extends Component {
     }
     state = {
         isCurrentWork: false,
-        experience: this.props.state.experience
+        experience: this.props.experience
     }
 
     handleCurrentDateTo(){
@@ -61,11 +62,29 @@ export class ExperienceComponent extends Component {
                 'description': value
             }
         })
-        console.log(this.state);
+    }
+
+    handleFinish(){
+        const { dispatch } = this.props;
+        dispatch(experienceActions
+            .addExperience(this.state.experience));
+    }
+
+    componentWillUnmount(){
+        const { dispatch } = this.props;
+        dispatch(experienceActions
+            .updateStore(this.state.experience));
     }
 
     render(){
         const monthFormat = 'YYYY/MM';
+        const experience = this.state.experience;
+        const dateFrom = null;
+        const dateTo = null;
+        if(experience){
+            dateFrom = moment(experience.DateFrom);
+            dateTo = moment(experience.DateTo);
+        }
         return(
             <div>
                 <Form>
@@ -74,6 +93,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="CompanyName"
+                                    initialValue = {experience.CompanyName}
                                     rules={[
                                     {
                                         required: true,
@@ -91,6 +111,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="City"
+                                    initialValue = {experience.City}
                                     rules={[
                                     {
                                         required: true,
@@ -111,6 +132,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="Position"
+                                    initialValue = {experience.Position}
                                     rules={[
                                     {
                                         required: true,
@@ -137,7 +159,12 @@ export class ExperienceComponent extends Component {
                                     },
                                     ]}
                                 >
-                                <DatePicker onChange = {this.handleDateFromChange} placeholder = 'Date from' format={monthFormat} picker="month" />
+                                <DatePicker 
+                                    defaultValue = {dateFrom} 
+                                    onChange = {this.handleDateFromChange} 
+                                    placeholder = 'Date from' 
+                                    format={monthFormat} 
+                                    picker="month" />
                             </Form.Item>
                         </Col>
                         {!this.state.isCurrentWork &&
@@ -152,7 +179,12 @@ export class ExperienceComponent extends Component {
                                         },
                                         ]}
                                     >
-                                    <DatePicker id ="DateTo" onChange = {this.handleDateToChange} value = {this.state.experience.DateTo} placeholder = 'Date to' format={monthFormat} picker="month" />
+                                    <DatePicker 
+                                        defaultValue = {dateTo} 
+                                        onChange = {this.handleDateToChange} 
+                                        placeholder = 'Date to' 
+                                        format={monthFormat} 
+                                        picker="month" />
                                 </Form.Item>
                             </Col>
                         }
@@ -172,7 +204,7 @@ export class ExperienceComponent extends Component {
                                     },
                                     ]}
                                 >
-                                <RichEditorComponent name = "Description" handleDescriptionChange = {this.handleDescriptionChange}/>      
+                                <RichEditorComponent name = "Description" initialValue = {experience.Description} handleDescriptionChange = {this.handleDescriptionChange}/>      
                             </Form.Item>
                         </Col>
                     </Row>

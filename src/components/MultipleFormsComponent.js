@@ -11,11 +11,26 @@ export class MultipleFormsComponent extends Component {
         this.addChildComponent = 
             this.addChildComponent.bind(this);
         this.handleCollapse = this.handleCollapse.bind(this);
+
+            this.state = this.initState();
+        
     }
-    
-    state = {
-        components : [
-        ]
+
+
+    initState(){
+        var id = 0;
+        var initState = {
+            components: []
+        };
+
+        this.props.state.experience.map(exp => {
+            id +=1;
+            initState.components.push(
+                {id: id, collapse: false, experience: exp}
+            )
+        })
+
+        return initState;
     }
 
     addChildComponent(e){
@@ -54,7 +69,7 @@ export class MultipleFormsComponent extends Component {
                                                 <DownOutlined />
                                             </Button>
                                         </Col>
-                                        <this.props.component  state = {this.props.state} key={item.id}/>
+                                        <this.props.component  experience = {item.experience} key={item.id}/>
                                     </div>                              
                                 }
                                 {!item.collapse &&
@@ -67,7 +82,7 @@ export class MultipleFormsComponent extends Component {
                                                 <UpOutlined/>
                                             </Button>
                                         </Col>
-                                        <CollapsedComponent/>
+                                        <CollapsedComponent experience = {item.experience} id = {item.id}/>
                                     </div>
                                 }
                             </div>

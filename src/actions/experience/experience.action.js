@@ -9,7 +9,7 @@ export const experienceActions = {
 
 function updateStore(experience){
     return dispatch => {
-        dispatch(resumeResult.updateStore({experience}));
+        dispatch(experienceResult.updateStore({experience}));
     }
 }
 
@@ -33,4 +33,4 @@ function addExperience(experience){
     }
 }
 
-export default resumeActions;
+export default experienceActions;

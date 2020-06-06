@@ -5,7 +5,11 @@ import 'react-quill/dist/quill.snow.css';
 export class RichEditorComponent extends Component {
   render(){
     return (
-      <ReactQuill name = { this.props.name } theme="snow" onChange = {this.props.handleDescriptionChange}/>
+      <ReactQuill 
+        theme="snow"
+        name = { this.props.name }
+        value = {this.props.initialValue}
+        onChange = {this.props.handleDescriptionChange}/>
     );
   }
 }

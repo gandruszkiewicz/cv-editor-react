@@ -2,28 +2,20 @@ import { experienceConstants } from '../constants/experience.constants';
 
 
 
-const initState = {
-    Id: null,
-    ResumeId: null,
-    CompanyName: null,
-    City: null,
-    Position: null,
-    DateFrom: null,
-    DateTo: null,
-    Description: null
-   };
+const initState = [
+];
 
    export function experience(state = initState,action){
     switch (action.type) {
         case experienceConstants.EXPERIENCE_STORE_UPDATE:
-          return action.parameters.resume;
+          return action.parameters.experience;
 
         case experienceConstants.EXPERIENCE_POST_REQUEST:
-          return action.parameters.resume;
+          return action.parameters.experience;
 
         case experienceConstants.EXPERIENCE_POST_SUCCESS:
-            let resumeId = action.parameters.resumeId;
-          return {...state,resumeId}
+            let experienceId = action.parameters.experience.id;
+          return {...state,experienceId}
 
         case experienceConstants.EXPERIENCE_POST_FAILURE:
           return {};
