@@ -9,7 +9,7 @@ const initState = {
     Email: null,
     Address: null,
     SumUp: null,
-    resumeId: null
+    ResumeId: null
    };
 
    export function resume(state = initState,action){
@@ -20,7 +20,8 @@ const initState = {
           return action.parameters.resume;
         case resumeConstants.RESUME_POST_SUCCESS:
             let resumeId = action.parameters.resumeId;
-          return {...state,resumeId}
+            state.ResumeId = resumeId;
+          return state;
         case resumeConstants.RESUME_POST_FAILURE:
           return {};
         default:

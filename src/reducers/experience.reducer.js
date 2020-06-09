@@ -8,14 +8,16 @@ const initState = [
    export function experience(state = initState,action){
     switch (action.type) {
         case experienceConstants.EXPERIENCE_STORE_UPDATE:
-          return action.parameters.experience;
+          return AddReturnWithExperienceId(
+            state,action.parameters.experience);
 
         case experienceConstants.EXPERIENCE_POST_REQUEST:
-          return action.parameters.experience;
+          return AddReturnWithExperienceId(
+            state,action.parameters.experience);
 
         case experienceConstants.EXPERIENCE_POST_SUCCESS:
-            let experienceId = action.parameters.experience.id;
-          return {...state,experienceId}
+          return AddReturnWithExperienceId(
+            state,action.parameters.experience);
 
         case experienceConstants.EXPERIENCE_POST_FAILURE:
           return {};
@@ -23,4 +25,10 @@ const initState = [
         default:
           return state
       }
+   }
+
+   function AddReturnWithExperienceId(state, experience){
+    state = [...state, experience];
+    state = state.filter(x => x.ExperienceId != null );
+    return state
    }

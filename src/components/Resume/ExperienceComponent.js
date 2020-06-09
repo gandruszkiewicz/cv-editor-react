@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Checkbox , Row, Col, DatePicker } from 'antd';
+import { Form, Input, Checkbox , Row, Col, DatePicker, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import RichEditorComponent from '../RichEditorComponent';
 import 'react-quill/dist/quill.snow.css';
@@ -17,6 +17,8 @@ export class ExperienceComponent extends Component {
             this.handleChange.bind(this);
         this.handleDescriptionChange = 
             this.handleDescriptionChange.bind(this);
+
+        this.handleFinish = this.handleFinish.bind(this);
     }
     state = {
         isCurrentWork: false,
@@ -59,15 +61,25 @@ export class ExperienceComponent extends Component {
         this.setState({
             experience: {
                 ...this.state.experience,
-                'description': value
+                Description: value
             }
         })
     }
 
-    handleFinish(){
+    handleFinish(e){
+        console.log(e);
         const { dispatch } = this.props;
+        
+        var experience = () =>{
+            return {
+                ...this.state.experience,
+                DateTo: moment(this.state.experience.DateTo),
+                DateFrom: moment(this.state.experience.DateFrom),
+                ResumeId: this.props.state.resume.ResumeId
+            }
+        }
         dispatch(experienceActions
-            .addExperience(this.state.experience));
+            .addExperience(experience()));
     }
 
     componentWillUnmount(){
@@ -79,21 +91,17 @@ export class ExperienceComponent extends Component {
     render(){
         const monthFormat = 'YYYY/MM';
         const experience = this.state.experience;
-        const dateFrom = null;
-        const dateTo = null;
-        if(experience){
-            dateFrom = moment(experience.DateFrom);
-            dateTo = moment(experience.DateTo);
-        }
+        const dateFrom = experience ? moment(experience.DateFrom) : null;
+        const dateTo = experience ? moment(experience.DateTo) : null;
         return(
             <div>
-                <Form>
+                <Form onFinish ={this.handleFinish}>
                     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                         <Col className="gutter-row" span={6} offset ={2}>
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="CompanyName"
-                                    initialValue = {experience.CompanyName}
+                                    initialValue = {experience?.CompanyName}
                                     rules={[
                                     {
                                         required: true,
@@ -111,7 +119,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="City"
-                                    initialValue = {experience.City}
+                                    initialValue = {experience?.City}
                                     rules={[
                                     {
                                         required: true,
@@ -132,7 +140,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="Position"
-                                    initialValue = {experience.Position}
+                                    initialValue = {experience?.Position}
                                     rules={[
                                     {
                                         required: true,
@@ -204,7 +212,16 @@ export class ExperienceComponent extends Component {
                                     },
                                     ]}
                                 >
-                                <RichEditorComponent name = "Description" initialValue = {experience.Description} handleDescriptionChange = {this.handleDescriptionChange}/>      
+                                <RichEditorComponent name = "Description" initialValue = {experience?.Description} handleDescriptionChange = {this.handleDescriptionChange}/>      
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} span = {2}>
+                        <Col className="gutter-row" span={20} offset ={2}>
+                            <Form.Item>
+                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                Save
+                                </Button>
                             </Form.Item>
                         </Col>
                     </Row>

@@ -20,7 +20,11 @@ function addExperience(experience){
         experienceService.addExperience(experience)
         .then(
             response => {
-                dispatch(experienceResult.successPost({ experienceId: response.data }));
+                experience = {
+                    ...experience,
+                    ExperienceId: response.data
+                }
+                dispatch(experienceResult.successPost({ experience }));
             },
             error =>{
                 var errors = error.response.data.errors;

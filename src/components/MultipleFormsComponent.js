@@ -12,7 +12,7 @@ export class MultipleFormsComponent extends Component {
             this.addChildComponent.bind(this);
         this.handleCollapse = this.handleCollapse.bind(this);
 
-            this.state = this.initState();
+        this.state = this.initState();
         
     }
 
@@ -44,7 +44,9 @@ export class MultipleFormsComponent extends Component {
     }
 
     handleCollapse(e){
-        var component = this.state.components.find(x => x.id == e.currentTarget.id);
+        var component = this.state.components
+            .find(x => x.id == e.currentTarget.id);
+
         component.collapse = !component.collapse;
         this.setState({
             ...this.state,
