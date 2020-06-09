@@ -3,7 +3,7 @@ import {Card, Row, Col} from 'antd';
 import moment from 'moment';
 
 export class CollapsedComponent extends Component{
-    state = this.props.experience
+    state = this.props.data
     render(){
         const data = this.state;
         return(

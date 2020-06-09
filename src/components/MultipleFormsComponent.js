@@ -16,6 +16,7 @@ export class MultipleFormsComponent extends Component {
         
     }
 
+    fluxStoreName = this.props.fluxStoreName;
 
     initState(){
         var id = 0;
@@ -23,10 +24,10 @@ export class MultipleFormsComponent extends Component {
             components: []
         };
 
-        this.props.state.experience.map(exp => {
+        this.props.state[this.fluxStoreName].map(item => {
             id +=1;
             initState.components.push(
-                {id: id, collapse: false, experience: exp}
+                {id: id, collapse: false, data: item}
             )
         })
 
@@ -71,7 +72,7 @@ export class MultipleFormsComponent extends Component {
                                                 <DownOutlined />
                                             </Button>
                                         </Col>
-                                        <this.props.component  experience = {item.experience} key={item.id}/>
+                                        <this.props.component  data = {item.data} key={item.id}/>
                                     </div>                              
                                 }
                                 {!item.collapse &&
@@ -84,7 +85,7 @@ export class MultipleFormsComponent extends Component {
                                                 <UpOutlined/>
                                             </Button>
                                         </Col>
-                                        <CollapsedComponent experience = {item.experience} id = {item.id}/>
+                                        <CollapsedComponent experience = {item.data} id = {item.id}/>
                                     </div>
                                 }
                             </div>

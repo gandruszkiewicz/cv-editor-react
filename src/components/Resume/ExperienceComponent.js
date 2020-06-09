@@ -22,7 +22,7 @@ export class ExperienceComponent extends Component {
     }
     state = {
         isCurrentWork: false,
-        experience: this.props.experience
+        experience: this.props.data
     }
 
     handleCurrentDateTo(){

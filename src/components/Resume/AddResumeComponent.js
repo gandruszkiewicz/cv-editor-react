@@ -38,11 +38,13 @@ class AddResumeComponent extends Component {
             {
             id: 2,
             title: 'Experience',
-            content:  <MultipleFormsComponent component = {ExperienceComponent}/>,
+            content:  <MultipleFormsComponent 
+                        component = {ExperienceComponent} 
+                        fluxStoreName = "experience"/>,
             },
             {
             id: 3,
-            title: 'Last',
+            title: 'Qualification',
             content: <></>,
             },
         ];
