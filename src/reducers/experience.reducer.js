@@ -28,7 +28,10 @@ const initState = [
    }
 
    function AddReturnWithExperienceId(state, experience){
-    state = [...state, experience];
-    state = state.filter(x => x.ExperienceId != null );
-    return state
+      if(experience){
+      }
+      
+      state = [...state, experience];
+      state = state.filter(x => x.ExperienceId != null );
+      return state
    }

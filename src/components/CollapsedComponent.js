@@ -6,6 +6,20 @@ export class CollapsedComponent extends Component{
     state = this.props.data
     render(){
         const data = this.state;
+        var instituteName = null
+        var positionName = null;
+
+        switch(this.props.fluxStoreName){
+            case("experience"):
+                instituteName = "CompanyName";
+                positionName = "Position";
+                break;
+            case("qualification"):
+                instituteName = "SchoolName";
+                positionName = "FieldOfStudy";
+                break;
+        }
+
         return(
             <>
             {data &&
@@ -18,8 +32,8 @@ export class CollapsedComponent extends Component{
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                     <Col className="gutter-row" span={6} offset ={2}>
                         <p>
-                            {data.CompanyName}, 
-                            {data.Position}, 
+                            {data[instituteName]}, 
+                            {data[positionName]}, 
                             {moment(data.DateFrom).format('YYYY/MM')} - {moment(data.DateTo).format('YYYY/MM')}
                         </p>
                     </Col>

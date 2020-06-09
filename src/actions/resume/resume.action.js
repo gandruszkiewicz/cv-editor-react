@@ -16,7 +16,7 @@ function updateStore(resume){
 function addResume(resume){
     return dispatch => {
         dispatch(resumeResult.requestPost({resume}));
-        delete resume.resumeId;
+        delete resume.ResumeId;
         resumeService.addResume(resume)
         .then(
             response => {

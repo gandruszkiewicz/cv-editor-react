@@ -1,40 +1,36 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox , Row, Col, DatePicker, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import RichEditorComponent from '../RichEditorComponent';
-import 'react-quill/dist/quill.snow.css';
-import {experienceActions} from '../../actions/experience/experience.action'
 import { connect } from 'react-redux';
 
 import moment from 'moment';
+import qualificationActions from '../../actions/qualification/qualification.action';
 
-export class ExperienceComponent extends Component {
+export class QualificationComponent extends Component {
     constructor(props){
         super(props);
         this.handleCurrentDateTo = 
             this.handleCurrentDateTo.bind(this);
         this.handleChange = 
             this.handleChange.bind(this);
-        this.handleDescriptionChange = 
-            this.handleDescriptionChange.bind(this);
 
         this.handleFinish = this.handleFinish.bind(this);
     }
     state = {
-        isCurrentWork: false,
-        experience: this.props.data
+        isCurrentSchool: false,
+        qualification: this.props.data
     }
 
     handleCurrentDateTo(){
         this.setState({
-            isCurrentWork : !this.state.isCurrentWork
+            isCurrentSchool : !this.state.isCurrentSchool
         });
     }
 
     handleChange(e){
         this.setState({
-            experience: {
-                ...this.state.experience,
+            qualification: {
+                ...this.state.qualification,
                 [e.target.id]: e.target.value
             }
         })
@@ -50,18 +46,9 @@ export class ExperienceComponent extends Component {
 
     handleDateChange(propertyName, date){
         this.setState({
-            experience: {
-                ...this.state.experience,
+            qualification: {
+                ...this.state.qualification,
                 [propertyName]: date.format('YYYY/MM')
-            }
-        })
-    }
-
-    handleDescriptionChange(value){
-        this.setState({
-            experience: {
-                ...this.state.experience,
-                Description: value
             }
         })
     }
@@ -70,29 +57,29 @@ export class ExperienceComponent extends Component {
         console.log(e);
         const { dispatch } = this.props;
         
-        var experience = () =>{
+        var qualification = () =>{
             return {
-                ...this.state.experience,
-                DateTo: moment(this.state.experience.DateTo),
-                DateFrom: moment(this.state.experience.DateFrom),
+                ...this.state.qualification,
+                DateTo: moment(this.state.qualification.DateTo),
+                DateFrom: moment(this.state.qualification.DateFrom),
                 ResumeId: this.props.state.resume.ResumeId
             }
         }
-        dispatch(experienceActions
-            .addExperience(experience()));
+        dispatch(qualificationActions
+            .addQualification(qualification()));
     }
 
     componentWillUnmount(){
         // const { dispatch } = this.props;
-        // dispatch(experienceActions
-        //     .updateStore(this.state.experience));
+        // dispatch(qualificationActions
+        //     .updateStore(this.state.qualification));
     }
 
     render(){
         const monthFormat = 'YYYY/MM';
-        const experience = this.state.experience;
-        const dateFrom = experience ? moment(experience.DateFrom) : null;
-        const dateTo = experience ? moment(experience.DateTo) : null;
+        const qualification = this.state.qualification;
+        const dateFrom = qualification ? moment(qualification.DateFrom) : null;
+        const dateTo = qualification ? moment(qualification.DateTo) : null;
         return(
             <div>
                 <Form onFinish ={this.handleFinish}>
@@ -100,18 +87,18 @@ export class ExperienceComponent extends Component {
                         <Col className="gutter-row" span={6} offset ={2}>
                             <Form.Item
                                     onChange = {this.handleChange}
-                                    name="CompanyName"
-                                    initialValue = {experience?.CompanyName}
+                                    name="SchoolName"
+                                    initialValue = {qualification?.CompanyName}
                                     rules={[
                                     {
                                         required: true,
-                                        message: 'Please input company name',
+                                        message: 'Please input school name',
                                     },
                                     ]}
                                 >
                                     <Input 
                                         prefix={<UserOutlined className="site-form-item-icon" />} 
-                                        placeholder="Company name"
+                                        placeholder="School name"
                                     />
                                 </Form.Item>
                         </Col>
@@ -119,7 +106,7 @@ export class ExperienceComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="City"
-                                    initialValue = {experience?.City}
+                                    initialValue = {qualification?.City}
                                     rules={[
                                     {
                                         required: true,
@@ -139,18 +126,38 @@ export class ExperienceComponent extends Component {
                         <Col className="gutter-row" span={12} offset ={2}>
                             <Form.Item
                                     onChange = {this.handleChange}
-                                    name="Position"
-                                    initialValue = {experience?.Position}
+                                    name="AcademicDegree"
+                                    initialValue = {qualification?.academicDegree}
                                     rules={[
                                     {
                                         required: true,
-                                        message: 'Please input position name',
+                                        message: 'Please input academic degree',
                                     },
                                     ]}
                                 >
                                     <Input 
                                         prefix={<UserOutlined className="site-form-item-icon" />} 
-                                        placeholder="Position name"
+                                        placeholder="Academic degree"
+                                    />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                        <Col className="gutter-row" span={12} offset ={2}>
+                            <Form.Item
+                                    onChange = {this.handleChange}
+                                    name="FieldOfStudy"
+                                    initialValue = {qualification?.fieldOfStudy}
+                                    rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input field of study',
+                                    },
+                                    ]}
+                                >
+                                    <Input 
+                                        prefix={<UserOutlined className="site-form-item-icon" />} 
+                                        placeholder="Field of study"
                                     />
                             </Form.Item>
                         </Col>
@@ -202,22 +209,6 @@ export class ExperienceComponent extends Component {
                     </Row>
                     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} span = {2}>
                         <Col className="gutter-row" span={20} offset ={2}>
-                            <Form.Item
-                                    onChange = {this.handleChange}
-                                    name="Description"
-                                    rules={[
-                                    {
-                                        required: false,
-                                        message: 'Please input description',
-                                    },
-                                    ]}
-                                >
-                                <RichEditorComponent name = "Description" initialValue = {experience?.Description} handleDescriptionChange = {this.handleDescriptionChange}/>      
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} span = {2}>
-                        <Col className="gutter-row" span={20} offset ={2}>
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button">
                                 Save
@@ -237,4 +228,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps)(ExperienceComponent);
+export default connect(mapStateToProps)(QualificationComponent);

@@ -14,11 +14,13 @@ export class MultipleFormsComponent extends Component {
 
         this.state = this.initState();
         
+        
     }
-
-    fluxStoreName = this.props.fluxStoreName;
+    
+    fluxStoreName = null;
 
     initState(){
+        this.fluxStoreName = this.props.fluxStoreName;
         var id = 0;
         var initState = {
             components: []
@@ -55,6 +57,10 @@ export class MultipleFormsComponent extends Component {
         })
     }
 
+    componentWillUnmount(){
+        this.fluxStoreName = null;
+    }
+
     render(){
         return(
             <>
@@ -85,7 +91,10 @@ export class MultipleFormsComponent extends Component {
                                                 <UpOutlined/>
                                             </Button>
                                         </Col>
-                                        <CollapsedComponent experience = {item.data} id = {item.id}/>
+                                        <CollapsedComponent 
+                                            data = {item.data}
+                                            fluxStoreName = {this.fluxStoreName}
+                                            id = {item.id}/>
                                     </div>
                                 }
                             </div>

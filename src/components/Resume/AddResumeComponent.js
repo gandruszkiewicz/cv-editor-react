@@ -5,6 +5,7 @@ import LayoutComponent from '../Layout/LayoutComponent';
 import PersonalDataFormComponent from './PersonalDataFormComponent';  
 import MultipleFormsComponent from '../MultipleFormsComponent';
 import ExperienceComponent from './ExperienceComponent';
+import QualificationComponent from './QualificationComponent';
 
 class AddResumeComponent extends Component {
     
@@ -28,7 +29,7 @@ class AddResumeComponent extends Component {
     render(){
 
         const { Step } = Steps;
-
+        var mountedComponent = null;
         const steps = [
             {
             id:1,
@@ -40,12 +41,16 @@ class AddResumeComponent extends Component {
             title: 'Experience',
             content:  <MultipleFormsComponent 
                         component = {ExperienceComponent} 
-                        fluxStoreName = "experience"/>,
+                        fluxStoreName = "experience"
+                        key ="experience"/>
             },
             {
             id: 3,
             title: 'Qualification',
-            content: <></>,
+            content: <MultipleFormsComponent
+                      component = {QualificationComponent}
+                      fluxStoreName = "qualification"
+                      key="qualification"/>
             },
         ];
 
