@@ -34,7 +34,9 @@ class AddResumeComponent extends Component {
             {
             id:1,
             title: 'Personal data',
-            content: <PersonalDataFormComponent state = {this.props.state.resume}/>,
+            content: <PersonalDataFormComponent
+                        state = {this.props.state.resume}
+                        key = {"resume"}/>,
             },
             {
             id: 2,

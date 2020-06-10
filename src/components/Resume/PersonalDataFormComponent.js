@@ -16,6 +16,7 @@ export class PersonalDataFormComponent extends Component {
         this.setState({
             [e.target.id]: e.target.value
         })
+        this.updateStore();
     }
 
     handleFinish(){
@@ -23,7 +24,7 @@ export class PersonalDataFormComponent extends Component {
         dispatch(resumeActions.addResume(this.state));
     }
 
-    componentWillUnmount(){
+    updateStore(){
         const { dispatch } = this.props;
         dispatch(resumeActions.updateStore(this.state));
     }

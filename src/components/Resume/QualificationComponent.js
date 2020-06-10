@@ -69,12 +69,6 @@ export class QualificationComponent extends Component {
             .addQualification(qualification()));
     }
 
-    componentWillUnmount(){
-        // const { dispatch } = this.props;
-        // dispatch(qualificationActions
-        //     .updateStore(this.state.qualification));
-    }
-
     render(){
         const monthFormat = 'YYYY/MM';
         const qualification = this.state.qualification;
@@ -88,7 +82,7 @@ export class QualificationComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="SchoolName"
-                                    initialValue = {qualification?.CompanyName}
+                                    initialValue = {qualification?.SchoolName}
                                     rules={[
                                     {
                                         required: true,
@@ -127,7 +121,7 @@ export class QualificationComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="AcademicDegree"
-                                    initialValue = {qualification?.academicDegree}
+                                    initialValue = {qualification?.AcademicDegree}
                                     rules={[
                                     {
                                         required: true,
@@ -147,7 +141,7 @@ export class QualificationComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="FieldOfStudy"
-                                    initialValue = {qualification?.fieldOfStudy}
+                                    initialValue = {qualification?.FieldOfStudy}
                                     rules={[
                                     {
                                         required: true,

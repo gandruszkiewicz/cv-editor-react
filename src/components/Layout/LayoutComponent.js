@@ -1,11 +1,7 @@
-import React,{Component} from 'react';
+import React from 'react';
 import {
   Layout
  } from 'antd';
-
-import history from '../../helpers/history';
-import {Route, Router} from 'react-router-dom';
-import AddResumeComponent from '../Resume/AddResumeComponent';
 
 import MenuLayoutComponent  from './MenuLayoutComponent';
 
