@@ -27,10 +27,10 @@ export class MultipleFormsComponent extends Component {
         };
 
         this.props.state[this.fluxStoreName].map(item => {
-            id +=1;
             initState.components.push(
                 {id: id, collapse: false, data: item}
             )
+            id += 1;
         })
 
         return initState;
@@ -41,7 +41,7 @@ export class MultipleFormsComponent extends Component {
         this.setState({
             components: [
                 ...this.state.components,
-                {id: id+1, collapse: false}
+                {id: id, collapse: false}
             ]
         });
     }

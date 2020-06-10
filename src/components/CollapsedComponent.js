@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {Card, Row, Col} from 'antd';
 import moment from 'moment';
+import {connect} from 'react-redux';
 
 export class CollapsedComponent extends Component{
     state = this.props.data
     render(){
-        const data = this.state;
+        
         var instituteName = null
         var positionName = null;
-
+        const data = !this.state && this.props.state ? 
+            this.props.state[this.props.fluxStoreName][this.props.id] : this.state;
         switch(this.props.fluxStoreName){
             case("experience"):
                 instituteName = "CompanyName";
@@ -19,14 +21,15 @@ export class CollapsedComponent extends Component{
                 positionName = "FieldOfStudy";
                 break;
         }
-
+        
+        const positionNumber = this.props.id + 1;
         return(
             <>
             {data &&
                 <Card>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                     <Col className="gutter-row" span={6}>
-                        <h4>Position {this.props.id}</h4>
+                        <h4>Position {positionNumber}</h4>
                     </Col>
                 </Row>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -51,5 +54,10 @@ export class CollapsedComponent extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    return{
+        state: state
+    }
+}
 
-export default CollapsedComponent;
+export default connect(mapStateToProps)(CollapsedComponent);

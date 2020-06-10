@@ -67,6 +67,9 @@ export class QualificationComponent extends Component {
         }
         dispatch(qualificationActions
             .addQualification(qualification()));
+
+        dispatch(qualificationActions
+            .updateStore(qualification()));
     }
 
     render(){

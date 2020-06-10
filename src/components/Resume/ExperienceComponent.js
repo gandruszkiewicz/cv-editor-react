@@ -67,7 +67,6 @@ export class ExperienceComponent extends Component {
     }
 
     handleFinish(e){
-        console.log(e);
         const { dispatch } = this.props;
         
         var experience = () =>{
@@ -80,12 +79,9 @@ export class ExperienceComponent extends Component {
         }
         dispatch(experienceActions
             .addExperience(experience()));
-    }
 
-    componentWillUnmount(){
-        // const { dispatch } = this.props;
-        // dispatch(experienceActions
-        //     .updateStore(this.state.experience));
+        dispatch(experienceActions
+            .updateStore(experience()));
     }
 
     render(){

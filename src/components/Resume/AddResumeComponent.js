@@ -6,6 +6,7 @@ import PersonalDataFormComponent from './PersonalDataFormComponent';
 import MultipleFormsComponent from '../MultipleFormsComponent';
 import ExperienceComponent from './ExperienceComponent';
 import QualificationComponent from './QualificationComponent';
+import AlertNotification from '../Alerts/AlertNotification';
 
 class AddResumeComponent extends Component {
     
@@ -57,6 +58,7 @@ class AddResumeComponent extends Component {
         ];
 
         const { current } = this.state;
+        const errorMessage = this.props.state.alertReducer.error;
         return(
           <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
             <Col className="gutter-row" span={12}>
@@ -65,7 +67,10 @@ class AddResumeComponent extends Component {
                   <Step key={item.title} title={item.title} />
                 ))}
               </Steps>
-              <div className="steps-content">{steps[current].content}</div>
+              <div className="steps-content">
+                {steps[current].content}
+                <AlertNotification errorMessage = {errorMessage}/>
+              </div>
               <div className="steps-action">
                 {current < steps.length - 1 && (
                   <Button type="primary" onClick={() => this.next()}>
