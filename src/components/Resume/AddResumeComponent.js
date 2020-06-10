@@ -30,7 +30,6 @@ class AddResumeComponent extends Component {
     render(){
 
         const { Step } = Steps;
-        var mountedComponent = null;
         const steps = [
             {
             id:1,
@@ -58,22 +57,6 @@ class AddResumeComponent extends Component {
         ];
 
         const { current } = this.state;
-        const errorMessage = () => {
-          var alert = this.props.state.alertReducer;
-          if(alert.error){
-            return{
-              message: alert.error,
-              type: "error"
-            };
-          }else if(alert.success){
-            return{
-              message: alert.success,
-              type: "success"
-            };
-          }else{
-            return null;
-          }
-        }
         return(
           <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
             <Col className="gutter-row" span={12}>
@@ -84,7 +67,6 @@ class AddResumeComponent extends Component {
               </Steps>
               <div className="steps-content">
                 {steps[current].content}
-                <AlertNotification alertMessage = {errorMessage()}/>
               </div>
               <div className="steps-action">
                 {current < steps.length - 1 && (

@@ -1,6 +1,7 @@
 import experienceService from '../../services/experience.service'
 import {experienceResult} from './experienceResult.action'
 import { alertActions } from './../alert.actions';
+import spinActions from '../spin/spin.action';
 
 export const experienceActions = {
     addExperience,
@@ -17,6 +18,7 @@ function addExperience(experience){
     return dispatch => {
         dispatch(experienceResult.requestPost({experience}));
         delete experience.id;
+        dispatch(spinActions.toggleSpin());
         experienceService.addExperience(experience)
         .then(
             response => {
@@ -24,6 +26,7 @@ function addExperience(experience){
                     ...experience,
                     ExperienceId: response.data
                 }
+                dispatch(spinActions.toggleSpin());
                 dispatch(experienceResult.successPost({ experience }));
             },
             error =>{
@@ -33,7 +36,7 @@ function addExperience(experience){
 
                 dispatch(experienceResult.failurePost(errors));
                 dispatch(alertActions.error(errors));
-                dispatch(alertActions.clear(errors));
+                dispatch(spinActions.toggleSpin());
             }
         )
     }

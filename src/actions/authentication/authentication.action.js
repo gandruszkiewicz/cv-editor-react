@@ -49,7 +49,6 @@ function register(email, password){
                     var errors = error.response.data.errors;
                     dispatch(authenticationResult.failure(errors));
                     dispatch(alertActions.error(errors));
-                    dispatch(alertActions.clear(errors));
                 }
             )
     };

@@ -1,6 +1,7 @@
 import qualificationService from '../../services/qualification.service'
 import { qualificationResult } from './qualificationResult.action'
 import { alertActions } from './../alert.actions';
+import spinActions from '../spin/spin.action';
 
 export const qualificationActions = {
     addQualification,
@@ -17,6 +18,7 @@ function addQualification(qualification){
     return dispatch => {
         dispatch(qualificationResult.requestPost({qualification}));
         // delete qualification.id;
+        dispatch(spinActions.toggleSpin());
         qualificationService.addQualification(qualification)
         .then(
             response => {
@@ -24,6 +26,7 @@ function addQualification(qualification){
                     ...qualification,
                     QualificationId: response.data
                 }
+                dispatch(spinActions.toggleSpin());
                 dispatch(qualificationResult.successPost({ qualification }));
             },
             error =>{
@@ -33,7 +36,7 @@ function addQualification(qualification){
 
                 dispatch(qualificationResult.failurePost(errors));
                 dispatch(alertActions.error(errors));
-                dispatch(alertActions.clear(errors));
+                dispatch(spinActions.toggleSpin());
             }
         )
     }

@@ -6,14 +6,20 @@ import { resume } from './resume.reducer';
 import { experience } from './experience.reducer';
 import { qualification } from './qualification.reducer';
 import { rootConstants } from '../constants/root.constants';
+import { authenticationConstants } from '../constants/authentication.constants';
+import { spin } from './spin.reducer';
 
 const combineReducer = combineReducers({
     authentication,
     alertReducer,
     resume,
     experience,
-    qualification
+    qualification,
+    spin
 })
-
+const storeClearingActions = [
+    authenticationConstants.LOGOUT,
+    rootConstants.ROOT_STORE_CLEAR
+]
 export default (state, action) => 
-combineReducer(action.type === rootConstants.ROOT_STORE_CLEAR ? undefined : state, action);
+combineReducer(storeClearingActions.some(x => x === action.type) ? undefined : state, action);

@@ -20,10 +20,8 @@ class RegistrationComponent extends Component{
     }
 
     render(){
-        const errorMessage = this.props.state.alertReducer.error;
         return(
             <div>
-                <AlertNotification errorMessage = {errorMessage}/>
                 <AuthenticationForm 
                 onFinish ={this.handleFinish}
                 submitButtonValue = {"Register"}
