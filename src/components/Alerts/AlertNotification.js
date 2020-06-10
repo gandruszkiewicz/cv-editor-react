@@ -3,20 +3,27 @@ import {notification } from 'antd';
 
 export const AlertNotification = (props) => {
 
-if(!props.errorMessage){
+if(!props.alertMessage){
     return null;
 }
 
-var errorMessages = props.errorMessage.map(message => {
+var messages = props.alertMessage.message.map(message => {
   return React.createElement('li',null,message.toString())
 })
 
+const handleDestroy = () =>{
+  props.alertMessage = null;
+}
+
 notification.open({
-    message: React.createElement('ul', {className:'errorList'}, errorMessages),
+    message: React.createElement('ul', {className:'errorList'}, messages),
     description:
       '',
     duration: 20,
-    className: 'alert-notificaton'
+    className: props.alertMessage.type === "error" 
+      ? 'alert-error-notificaton' 
+      : 'alert-success-notificaton',
+    onClose: {handleDestroy}
   });
 
   return(
