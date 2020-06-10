@@ -27,7 +27,9 @@ function addQualification(qualification){
                 dispatch(qualificationResult.successPost({ qualification }));
             },
             error =>{
-                var errors = error.response.data.errors;
+                var errors = error?.response ? 
+                    error.response.data.errors
+                    :new Array(error.message);
 
                 dispatch(qualificationResult.failurePost(errors));
                 dispatch(alertActions.error(errors));

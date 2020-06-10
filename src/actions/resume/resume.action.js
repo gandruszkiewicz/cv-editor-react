@@ -21,9 +21,12 @@ function addResume(resume){
         .then(
             response => {
                 dispatch(resumeResult.successPost({ resumeId: response.data }));
+                dispatch(alertActions.clear());
             },
             error =>{
-                var errors = error.response.data.errors;
+                var errors = error?.response ? 
+                    error.response.data.errors
+                    :new Array(error.message);
 
                 dispatch(resumeResult.failurePost(errors));
                 dispatch(alertActions.error(errors));

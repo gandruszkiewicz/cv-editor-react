@@ -24,7 +24,9 @@ function login(email, password){
                     history.push('/');
                 },
                 error =>{
-                    var errors = error.response.data.errors;
+                    var errors = error?.response ? 
+                        error.response.data.errors
+                        :new Array(error.message);
 
                     dispatch(authenticationResult.failure(errors));
                     dispatch(alertActions.error(errors));
