@@ -83,9 +83,12 @@ export class QualificationFormComponent extends Component {
     handleDelete(e){
         const {dispatch} = this.props;
         if(this.state.qualification){
+            var qualificationId = 
+                this.props.state
+                    .qualification[this.props.id].QualificationId;
             dispatch(
                 qualificationActions
-                .deleteQualification(this.state.qualification.QualificationId));
+                .deleteQualification(qualificationId));
         }
 
         this.props.handleDelete(e);

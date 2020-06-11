@@ -94,10 +94,13 @@ export class ExperienceFormComponent extends Component {
 
     handleDelete(e){
         const {dispatch} = this.props;
-        if(this.state.qualification){
+        if(this.state.experience){
+            var experienceId = 
+                this.props.state
+                .experience[this.props.id].ExperienceId;
             dispatch(
                 experienceActions
-                .deleteExperience(this.state.experience.ExperienceId));
+                .deleteExperience(experienceId));
         }
 
         this.props.handleDelete(e);
