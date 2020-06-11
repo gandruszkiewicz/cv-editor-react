@@ -26,7 +26,7 @@ export class MultipleFormsComponent extends Component {
 
         this.props.state[this.fluxStoreName].map(item => {
             initState.components.push(
-                {id: id, collapse: false, data: item}
+                {id: id, collapse: true, data: item}
             )
             id += 1;
         })
@@ -66,7 +66,7 @@ export class MultipleFormsComponent extends Component {
                     this.state.components.map((item) => (
                         <div className = 'multiple-form-layout'>
                             <div className = 'margin-all'>
-                                {item.collapse && 
+                                {!item.collapse && 
                                     <div>
                                         <Col className="gutter-row" span={1} offset ={22}>
                                             <Button type='text' 
@@ -79,7 +79,7 @@ export class MultipleFormsComponent extends Component {
                                         <this.props.component  data = {item.data} key={item.id}/>
                                     </div>                              
                                 }
-                                {!item.collapse &&
+                                {item.collapse &&
                                     <div>
                                         <Col className="gutter-row" span={1} offset ={22}>
                                             <Button type='text' 
