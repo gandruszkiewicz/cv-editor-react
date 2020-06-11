@@ -30,12 +30,8 @@ function addExperience(experience){
                 dispatch(experienceResult.successPost({ experience }));
             },
             error =>{
-                var errors = error?.response ? 
-                    error.response.data.errors
-                    :new Array(error.message);
-
-                dispatch(experienceResult.failurePost(errors));
-                dispatch(alertActions.error(errors));
+                dispatch(experienceResult.failurePost(error));
+                dispatch(alertActions.error(error));
                 dispatch(spinActions.toggleSpin());
             }
         )

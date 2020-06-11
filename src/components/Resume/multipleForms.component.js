@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PlusCircleOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Button, Col } from 'antd';
-import CollapsedComponent from './CollapsedComponent';
+import CollapsedComponent from './collapsed.component';
 import { connect } from 'react-redux';
 
 export class MultipleFormsComponent extends Component {
@@ -13,8 +13,6 @@ export class MultipleFormsComponent extends Component {
         this.handleCollapse = this.handleCollapse.bind(this);
 
         this.state = this.initState();
-        
-        
     }
     
     fluxStoreName = null;

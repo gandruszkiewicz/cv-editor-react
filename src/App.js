@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {Route, Router} from 'react-router-dom';
-import AddResumeComponent from './components/Resume/AddResumeComponent';
+import ResumeFormComponent from './components/Resume/resumeForm.component';
 import './App.less';
 
 import history from './helpers/history';
 import { Spin } from 'antd';
-import HomeComponent from './components/HomeComponent';
-import LoginComponent from './components/Authentication/LoginComponent';
+import HomeComponent from './components/Layout/home.component';
+import LoginFormComponent from './components/Authentication/loginForm.component';
 import PrivateRouter from './helpers/PrivateRouter'
-import RegistrationComponent from './components/Authentication/RegistrationComponent';
+import RegistrationFormComponent from './components/Authentication/registratonForm.component';
 import {connect} from 'react-redux';
-import AlertNotification from './components/Alerts/AlertNotification';
+import AlertNotificationComponent from './components/Alerts/alertNotification.component';
 import {alertActions} from './actions/alert.actions'
 
 class App extends Component {
@@ -39,12 +39,12 @@ class App extends Component {
     return (
       <Spin tip = "Loading..." spinning = {isSpinning}>
         <div className="App">
-        <AlertNotification alertMessage = {alertMessage()}/>
+        <AlertNotificationComponent alertMessage = {alertMessage()}/>
           <Router history ={history}>
             <PrivateRouter exact path='/' component={HomeComponent}/>
-            <Route exact path='/login' component={LoginComponent}/>
-            <Route exact path='/register' component={RegistrationComponent}/>
-            <PrivateRouter exact path='/add-resume' component = {AddResumeComponent}/>
+            <Route exact path='/login' component={LoginFormComponent}/>
+            <Route exact path='/register' component={RegistrationFormComponent}/>
+            <PrivateRouter exact path='/add-resume' component = {ResumeFormComponent}/>
           </Router>
         </div>
       </Spin>

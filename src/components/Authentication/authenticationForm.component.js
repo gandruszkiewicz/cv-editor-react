@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 
-export class AuthenticationForm extends Component {
+export class AuthenticationFormComponent extends Component {
 
     state = {
         email: '',
@@ -81,4 +81,4 @@ export class AuthenticationForm extends Component {
         )
     }
 }
-export default AuthenticationForm;
+export default AuthenticationFormComponent;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox , Row, Col, DatePicker, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import RichEditorComponent from '../RichEditorComponent';
+import RichEditorComponent from '../richEditor.component';
 import 'react-quill/dist/quill.snow.css';
 import {experienceActions} from '../../actions/experience/experience.action'
 import { connect } from 'react-redux';
 
 import moment from 'moment';
 
-export class ExperienceComponent extends Component {
+export class ExperienceFormComponent extends Component {
     constructor(props){
         super(props);
         this.handleCurrentDateTo = 
@@ -233,4 +233,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps)(ExperienceComponent);
+export default connect(mapStateToProps)(ExperienceFormComponent);

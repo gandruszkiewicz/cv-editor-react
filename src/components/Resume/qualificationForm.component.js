@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import qualificationActions from '../../actions/qualification/qualification.action';
 
-export class QualificationComponent extends Component {
+export class QualificationFormComponent extends Component {
     constructor(props){
         super(props);
         this.handleCurrentDateTo = 
@@ -225,4 +225,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps)(QualificationComponent);
+export default connect(mapStateToProps)(QualificationFormComponent);

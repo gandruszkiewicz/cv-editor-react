@@ -1,7 +1,7 @@
 import React from 'react';
 import {notification } from 'antd';
 
-export const AlertNotification = (props) => {
+export const AlertNotificationComponent = (props) => {
 
 if(!props.alertMessage){
     return null;
@@ -31,4 +31,4 @@ notification.open({
   )
 }
 
-export default AlertNotification;
+export default AlertNotificationComponent;

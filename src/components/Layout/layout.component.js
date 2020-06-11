@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-  Layout
- } from 'antd';
+import { Layout } from 'antd';
 
-import MenuLayoutComponent  from './MenuLayoutComponent';
+import MenuLayoutComponent  from './menuLayout.component';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const LayoutComponent = (WrappedComponent) => {
     return(props) => {

@@ -30,12 +30,8 @@ function addQualification(qualification){
                 dispatch(qualificationResult.successPost({ qualification }));
             },
             error =>{
-                var errors = error?.response ? 
-                    error.response.data.errors
-                    :new Array(error.message);
-
-                dispatch(qualificationResult.failurePost(errors));
-                dispatch(alertActions.error(errors));
+                dispatch(qualificationResult.failurePost(error));
+                dispatch(alertActions.error(error));
                 dispatch(spinActions.toggleSpin());
             }
         )

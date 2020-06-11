@@ -27,12 +27,8 @@ function addResume(resume){
                 dispatch(alertActions.clear());
             },
             error =>{
-                var errors = error?.response?.data ? 
-                    error.response.data.errors
-                    :new Array(error.message);
-
                 dispatch(spinActions.toggleSpin());
-                dispatch(alertActions.error(errors));
+                dispatch(alertActions.error(error));
             }
         )
     }

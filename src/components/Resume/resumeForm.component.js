@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Steps, Button, message, Col, Row } from 'antd';
-import LayoutComponent from '../Layout/LayoutComponent';
-import PersonalDataFormComponent from './PersonalDataFormComponent';  
-import MultipleFormsComponent from '../MultipleFormsComponent';
-import ExperienceComponent from './ExperienceComponent';
-import QualificationComponent from './QualificationComponent';
-import AlertNotification from '../Alerts/AlertNotification';
+import LayoutComponent from '../Layout/layout.component';
+import PersonalDataFormComponent from './personalDataForm.component';  
+import MultipleFormsComponent from './multipleForms.component';
+import ExperienceFormComponent from './experienceForm.component';
+import QualificationFormComponent from './qualificationForm.component';
 
-class AddResumeComponent extends Component {
+class ResumeFormComponent extends Component {
     
     constructor(props) {
         super(props);
@@ -42,7 +41,7 @@ class AddResumeComponent extends Component {
             id: 2,
             title: 'Experience',
             content:  <MultipleFormsComponent 
-                        component = {ExperienceComponent} 
+                        component = {ExperienceFormComponent} 
                         fluxStoreName = "experience"
                         key ="experience"/>
             },
@@ -50,7 +49,7 @@ class AddResumeComponent extends Component {
             id: 3,
             title: 'Qualification',
             content: <MultipleFormsComponent
-                      component = {QualificationComponent}
+                      component = {QualificationFormComponent}
                       fluxStoreName = "qualification"
                       key="qualification"/>
             },
@@ -100,4 +99,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default LayoutComponent(connect(mapStateToProps)(AddResumeComponent));
+export default LayoutComponent(connect(mapStateToProps)(ResumeFormComponent));

@@ -12,14 +12,15 @@ function success(message) {
 }
 
 function error(error) {
+    // Later on will be added refresh token handling
     if(error?.response?.status === 401){
         return dispatch => dispatch(authenticationActions.logout());
     }
-    // var errors = error?.response?.data ? 
-    //     error.response.data.errors
-    //     :new Array(error.message);
+    var errors = error?.response?.data ? 
+        error.response.data.errors
+        :new Array(error.message);
 
-    return { type: alertConstants.ERROR, error };
+    return { type: alertConstants.ERROR, errors };
 }
 
 function clear() {

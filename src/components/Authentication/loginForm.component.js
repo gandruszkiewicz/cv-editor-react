@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { AuthenticationForm } from './AuthenticationForm';
+import { AuthenticationFormComponent } from './authenticationForm.component';
 import { connect } from 'react-redux';
-import { authenticationActions } from '../../actions/authentication/authentication.action'
-import AlertNotification from '../Alerts/AlertNotification';
+import { authenticationActions } from '../../actions/authentication/authentication.action';
 
-class LoginComponent extends Component {
+class LoginFormComponent extends Component {
     constructor(props){
         super(props);
 
@@ -19,7 +18,7 @@ class LoginComponent extends Component {
     render(){
         return(
             <div>
-                <AuthenticationForm 
+                <AuthenticationFormComponent 
                 onFinish ={this.handleFinish}
                 submitButtonValue = {"Login"}
                 displayRegister = {"visible"}
@@ -36,4 +35,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps)(LoginComponent);
+export default connect(mapStateToProps)(LoginFormComponent);
