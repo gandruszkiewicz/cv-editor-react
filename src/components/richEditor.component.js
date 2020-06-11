@@ -7,18 +7,10 @@ export class RichEditorComponent extends Component {
     return (
       <>
       {
-        this.props.initialValue &&
         <ReactQuill 
         theme="snow"
         name = { this.props.name }
-        value = {this.props.initialValue}
-        onChange = {this.props.handleDescriptionChange}/>
-      }
-      {
-        !this.props.initialValue &&
-        <ReactQuill 
-        theme="snow"
-        name = { this.props.name }
+        value = {this.props.initialValue? this.props.initialValue : ''}
         onChange = {this.props.handleDescriptionChange}/>
       }
       </>
