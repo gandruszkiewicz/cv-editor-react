@@ -9,17 +9,30 @@ axios.defaults.headers.common['Authorization'] = user
 const apiController = "experience";
 
 export const experienceService = {
-    addExperience
+    addExperience,
+    deleteExperience
 }
 
 function addExperience(parameters){
     let url = ApiRouter.getUrlForRequest(apiController);
-    return postAuthentication(url, parameters);
+    return postRequest(url, parameters);
+}
+
+function deleteExperience(experienceId){
+    let url = ApiRouter.getUrlForRequest(apiController);
+    return deleteRequest(url,experienceId)
 }
 
 
-function postAuthentication(url,body){
+function postRequest(url,body){
     return axios.post(url,body,)
+        .then(response =>{
+            return response;
+        });
+}
+
+function deleteRequest(url,experienceId){
+    return axios.delete(url+ `?experienceId=${experienceId}`)        
         .then(response =>{
             return response;
         });

@@ -5,7 +5,8 @@ import spinActions from '../spin/spin.action';
 
 export const qualificationActions = {
     addQualification,
-    updateStore
+    updateStore,
+    deleteQualification
 }
 
 function updateStore(qualification){
@@ -17,7 +18,6 @@ function updateStore(qualification){
 function addQualification(qualification){
     return dispatch => {
         dispatch(qualificationResult.requestPost({qualification}));
-        // delete qualification.id;
         dispatch(spinActions.toggleSpin());
         qualificationService.addQualification(qualification)
         .then(
@@ -31,6 +31,26 @@ function addQualification(qualification){
             },
             error =>{
                 dispatch(qualificationResult.failurePost(error));
+                dispatch(alertActions.error(error));
+                dispatch(spinActions.toggleSpin());
+            }
+        )
+    }
+}
+
+function deleteQualification(qualificationId){
+    return dispatch => {
+        dispatch(qualificationResult.requestDelete({qualificationId}));
+        dispatch(spinActions.toggleSpin());
+        qualificationService.deleteQualification(qualificationId)
+        .then(
+            response => {
+                console.log(response);
+                dispatch(spinActions.toggleSpin());
+                dispatch(qualificationResult.successDelete({ qualificationId }));
+            },
+            error =>{
+                dispatch(qualificationResult.failureDelete(error));
                 dispatch(alertActions.error(error));
                 dispatch(spinActions.toggleSpin());
             }

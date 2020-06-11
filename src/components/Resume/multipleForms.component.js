@@ -11,6 +11,7 @@ export class MultipleFormsComponent extends Component {
         this.addChildComponent = 
             this.addChildComponent.bind(this);
         this.handleCollapse = this.handleCollapse.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
         this.state = this.initState();
     }
@@ -46,7 +47,7 @@ export class MultipleFormsComponent extends Component {
 
     handleCollapse(e){
         var component = this.state.components
-            .find(x => x.id == e.currentTarget.id);
+            .find(x => x.id === Number(e.currentTarget.id));
 
         component.collapse = !component.collapse;
         this.setState({
@@ -58,6 +59,16 @@ export class MultipleFormsComponent extends Component {
     componentWillUnmount(){
         this.fluxStoreName = null;
     }
+
+    handleDelete(e){
+        let filteredState = 
+            this.state.components
+                .filter(x => x.id !== Number(e.currentTarget.id))
+        this.setState({
+            components: filteredState
+        })
+    }
+
 
     render(){
         return(
@@ -76,7 +87,11 @@ export class MultipleFormsComponent extends Component {
                                                 <DownOutlined />
                                             </Button>
                                         </Col>
-                                        <this.props.component  data = {item.data} key={item.id}/>
+                                        <this.props.component  
+                                            data = {item.data} 
+                                            key={item.id} 
+                                            id = {item.id}
+                                            handleDelete = {this.handleDelete}/>
                                     </div>                              
                                 }
                                 {item.collapse &&

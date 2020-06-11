@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox , Row, Col, DatePicker, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, DeleteOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 
 import moment from 'moment';
@@ -15,11 +15,19 @@ export class QualificationFormComponent extends Component {
             this.handleChange.bind(this);
 
         this.handleFinish = this.handleFinish.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+
+        var stateInit = {
+            isCurrentSchool: false,
+            qualification: !this.props.data 
+                            ? this.props.state.qualification[this.props.id] 
+                            : this.props.data
+        }
+        this.state = stateInit;
     }
     state = {
-        isCurrentSchool: false,
-        qualification: this.props.data
-    }
+
+    };
 
     handleCurrentDateTo(){
         this.setState({
@@ -70,6 +78,17 @@ export class QualificationFormComponent extends Component {
 
         dispatch(qualificationActions
             .updateStore(qualification()));
+    }
+
+    handleDelete(e){
+        const {dispatch} = this.props;
+        if(this.state.qualification){
+            dispatch(
+                qualificationActions
+                .deleteQualification(this.state.qualification.QualificationId));
+        }
+
+        this.props.handleDelete(e);
     }
 
     render(){
@@ -207,13 +226,18 @@ export class QualificationFormComponent extends Component {
                     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} span = {2}>
                         <Col className="gutter-row" span={20} offset ={2}>
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button type="primary" htmlType="submit">
                                 Save
                                 </Button>
                             </Form.Item>
                         </Col>
                     </Row>
                 </Form>
+                <Col className="gutter-row" span={20} offset ={22}>
+                        <Button type="ghost" htmlType="submit" onClick = {this.handleDelete} id = {this.props.id}>
+                            <DeleteOutlined />
+                        </Button>
+                </Col>
             </div>
         )
     }

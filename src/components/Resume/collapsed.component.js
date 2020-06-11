@@ -11,6 +11,7 @@ export class CollapsedComponent extends Component{
         var positionName = null;
         const data = !this.state && this.props.state ? 
             this.props.state[this.props.fluxStoreName][this.props.id] : this.state;
+
         switch(this.props.fluxStoreName){
             case("experience"):
                 instituteName = "CompanyName";
@@ -19,6 +20,8 @@ export class CollapsedComponent extends Component{
             case("qualification"):
                 instituteName = "SchoolName";
                 positionName = "FieldOfStudy";
+                break;
+            default:
                 break;
         }
         

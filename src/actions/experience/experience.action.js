@@ -5,6 +5,7 @@ import spinActions from '../spin/spin.action';
 
 export const experienceActions = {
     addExperience,
+    deleteExperience,
     updateStore
 }
 
@@ -31,6 +32,25 @@ function addExperience(experience){
             },
             error =>{
                 dispatch(experienceResult.failurePost(error));
+                dispatch(alertActions.error(error));
+                dispatch(spinActions.toggleSpin());
+            }
+        )
+    }
+}
+
+function deleteExperience(experienceId){
+    return dispatch => {
+        dispatch(experienceResult.requestDelete({experienceId}));
+        dispatch(spinActions.toggleSpin());
+        experienceService.deleteExperience(experienceId)
+        .then(
+            response => {
+                dispatch(spinActions.toggleSpin());
+                dispatch(experienceResult.successDelete({ experienceId }));
+            },
+            error =>{
+                dispatch(experienceResult.failureDelete(error));
                 dispatch(alertActions.error(error));
                 dispatch(spinActions.toggleSpin());
             }

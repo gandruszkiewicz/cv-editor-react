@@ -19,6 +19,13 @@ const initState = [
           return AddReturnWithExperienceId(
             state,action.parameters.experience);
 
+        case experienceConstants.EXPERIENCE_DELETE_SUCCESS:
+          let filteredState = state
+            .filter(x => x.ExperienceId !== action.parameters.experienceId);
+          return {
+            filteredState
+          };
+
         case experienceConstants.EXPERIENCE_POST_FAILURE:
           return {};
 

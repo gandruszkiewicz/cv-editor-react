@@ -9,17 +9,30 @@ axios.defaults.headers.common['Authorization'] = user
 const apiController = "qualification";
 
 export const qualificationService = {
-    addQualification
+    addQualification,
+    deleteQualification
 }
 
 function addQualification(parameters){
     let url = ApiRouter.getUrlForRequest(apiController);
-    return postAuthentication(url, parameters);
+    return postRequest(url, parameters);
+}
+
+function deleteQualification(qualificationId){
+    let url = ApiRouter.getUrlForRequest(apiController);
+    return deleteRequest(url,qualificationId)
 }
 
 
-function postAuthentication(url,body){
+function postRequest(url,body){
     return axios.post(url,body,)
+        .then(response =>{
+            return response;
+        });
+}
+
+function deleteRequest(url,qualificationId){
+    return axios.delete(url+ `?qualificationId=${qualificationId}`)        
         .then(response =>{
             return response;
         });

@@ -1,5 +1,4 @@
-import resumeService from '../../services/resume.service'
-import {spinResult} from './spinResult.action'
+import {spinResult} from './spinResult.action';
 
 export const spinActions = {
     toggleSpin

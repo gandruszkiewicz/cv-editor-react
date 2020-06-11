@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { AuthenticationFormComponent } from './authenticationForm.component';
 import { connect } from 'react-redux';
 import { authenticationActions } from '../../actions/authentication/authentication.action'
-import AlertNotification from '../Alerts/alertNotification.component'; 
 
 
 

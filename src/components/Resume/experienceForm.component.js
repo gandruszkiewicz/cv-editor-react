@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox , Row, Col, DatePicker, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, DeleteOutlined } from '@ant-design/icons';
 import RichEditorComponent from '../richEditor.component';
 import 'react-quill/dist/quill.snow.css';
 import {experienceActions} from '../../actions/experience/experience.action'
@@ -19,10 +19,18 @@ export class ExperienceFormComponent extends Component {
             this.handleDescriptionChange.bind(this);
 
         this.handleFinish = this.handleFinish.bind(this);
+
+        this.handleDelete = this.handleDelete.bind(this);
+
+        var stateInit = {
+            isCurrentWork: false,
+            experience: !this.props.data 
+                            ? this.props.state.experience[this.props.id] 
+                            : this.props.data
+        }
+        this.state = stateInit;
     }
     state = {
-        isCurrentWork: false,
-        experience: this.props.data
     }
 
     handleCurrentDateTo(){
@@ -82,6 +90,17 @@ export class ExperienceFormComponent extends Component {
 
         dispatch(experienceActions
             .updateStore(experience()));
+    }
+
+    handleDelete(e){
+        const {dispatch} = this.props;
+        if(this.state.qualification){
+            dispatch(
+                experienceActions
+                .deleteExperience(this.state.experience.ExperienceId));
+        }
+
+        this.props.handleDelete(e);
     }
 
     render(){
@@ -222,6 +241,11 @@ export class ExperienceFormComponent extends Component {
                         </Col>
                     </Row>
                 </Form>
+                <Col className="gutter-row" span={20} offset ={22}>
+                        <Button type="ghost" htmlType="submit" onClick = {this.handleDelete} id = {this.props.id}>
+                            <DeleteOutlined />
+                        </Button>
+                </Col>
             </div>
         )
     }
