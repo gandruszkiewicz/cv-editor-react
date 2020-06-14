@@ -1,9 +1,10 @@
 import { experienceConstants } from '../constants/experience.constants';
+import Experience from '../model/experience';
+import mapper from '../helpers/mapper';
 
 
-
-const initState = [
-];
+// Array of '../model/experience' objects
+const initState = new Array();
 
    export function experience(state = initState,action){
     switch (action.type) {
@@ -38,7 +39,7 @@ const initState = [
       if(experience){
       }
       
-      state = [...state, experience];
+      state = [...state, mapper(new Experience(),experience)];
       state = state.filter(x => x.ExperienceId != null );
       return state
    }

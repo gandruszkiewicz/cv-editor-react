@@ -6,6 +6,9 @@ import 'react-quill/dist/quill.snow.css';
 import {experienceActions} from '../../actions/experience/experience.action'
 import { connect } from 'react-redux';
 
+import {mapper} from '../../helpers/mapper'
+import {Experience} from '../../model/experience'
+
 import moment from 'moment';
 
 export class ExperienceFormComponent extends Component {
