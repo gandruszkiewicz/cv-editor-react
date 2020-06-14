@@ -1,9 +1,10 @@
 import { qualificationConstants } from '../constants/qualification.constants';
+import mapper from '../helpers/mapper';
+import Qualification from '../model/qualification';
 
 
-
-const initState = [
-];
+// Array of '../model/qualification' objects
+const initState = new Array();
 
    export function qualification(state = initState,action){
     switch (action.type) {
@@ -35,10 +36,7 @@ const initState = [
    }
 
    function AddReturnWithQualificatonId(state, qualification){
-    if(qualification){
-
-    }
-    state = [...state, qualification];
+    state = [...state,  mapper(new Qualification(), qualification)];
     state = state.filter(x => x.QualificationId != null );
     return state
    }

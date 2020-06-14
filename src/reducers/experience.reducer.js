@@ -35,10 +35,7 @@ const initState = new Array();
       }
    }
 
-   function AddReturnWithExperienceId(state, experience){
-      if(experience){
-      }
-      
+   function AddReturnWithExperienceId(state, experience){      
       state = [...state, mapper(new Experience(),experience)];
       state = state.filter(x => x.ExperienceId != null );
       return state
