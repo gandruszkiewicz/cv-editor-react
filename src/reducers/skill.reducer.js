@@ -24,11 +24,8 @@ const initState = new Array();
           return {};
 
         case skillConstants.SKILL_DELETE_SUCCESS:
-          let filteredState = state
-            .filter(x => x.SkillId !== action.parameters.skillId);
-          return {
-            filteredState
-          };
+          return state
+          .filter(x => x.SkillId !== action.parameters.skillId);
 
         default:
           return state

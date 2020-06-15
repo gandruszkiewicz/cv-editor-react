@@ -67,10 +67,10 @@ export class SkillFormComponent extends Component {
         if(this.state.skill){
             var skillId = 
                 this.props.state
-                    .skill[this.props.id].SkillId;
+                    .skill[this.props.id].Id;
             dispatch(
                 skillActions
-                .deleteQualification(skillId));
+                .deleteSkill(skillId));
         }
 
         this.props.handleDelete(e);

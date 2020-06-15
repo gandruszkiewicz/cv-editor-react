@@ -1,14 +1,13 @@
 import skillService from '../../services/skill.service'
 import { skillResults } from './skillResults.action'
-import { alertActions } from './../alert.actions';
-import spinActions from '../spin/spin.action';
-import { basicActions } from '../basic.actions';
+import { BasicActions } from '../basic.actions';
 
 export const skillActions = {
     addSkill,
     updateStore,
     deleteSkill
 }
+const basicActions = new BasicActions(skillResults, skillService);
 
 function updateStore(qualification){
     return basicActions.updateStore(qualification,skillResults);

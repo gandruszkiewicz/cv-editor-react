@@ -18,6 +18,8 @@ export class MultipleFormsComponent extends Component {
     }
     
     fluxStoreName = null;
+    isChildSkillFormComponent = 
+        this.props.component.WrappedComponent === SkillFormComponent;
 
     initState(){
         this.fluxStoreName = this.props.fluxStoreName;
@@ -25,14 +27,14 @@ export class MultipleFormsComponent extends Component {
         var initState = {
             components: []
         };
-
+        var isCollapsed = !this.isChildSkillFormComponent;
         this.props.state[this.fluxStoreName].map(item => {
             initState.components.push(
-                {id: id, collapse: true, data: item}
+                {id: id, collapse: isCollapsed, data: item}
             )
             id += 1;
         })
-
+        
         return initState;
     }
 
@@ -62,11 +64,11 @@ export class MultipleFormsComponent extends Component {
     }
 
     handleDelete(e){
-        let filteredState = 
-            this.state.components
-                .filter(x => x.id !== Number(e.currentTarget.id))
+            
         this.setState({
-            components: filteredState
+            components: this.state.components
+                            .filter(
+                                x => x.id !== Number(e.currentTarget.id))
         })
     }
 
@@ -80,7 +82,7 @@ export class MultipleFormsComponent extends Component {
                             <div className = 'margin-all'>
                                 {!item.collapse && 
                                     <div>
-                                        {this.props.component.WrappedComponent != SkillFormComponent &&
+                                        {!this.isChildSkillFormComponent &&
                                             <Col className="gutter-row" span={1} offset ={22}>
                                                 <Button type='text' 
                                                         className='arrow-button' 
