@@ -3,6 +3,7 @@ import { PlusCircleOutlined, DownOutlined, UpOutlined } from '@ant-design/icons'
 import { Button, Col } from 'antd';
 import CollapsedComponent from './collapsed.component';
 import { connect } from 'react-redux';
+import { SkillFormComponent } from './skillForm.component';
 
 export class MultipleFormsComponent extends Component {
     constructor(props){
@@ -79,14 +80,16 @@ export class MultipleFormsComponent extends Component {
                             <div className = 'margin-all'>
                                 {!item.collapse && 
                                     <div>
-                                        <Col className="gutter-row" span={1} offset ={22}>
-                                            <Button type='text' 
-                                                    className='arrow-button' 
-                                                    onClick={this.handleCollapse}
-                                                    id = {item.id}>
-                                                <DownOutlined />
-                                            </Button>
-                                        </Col>
+                                        {this.props.component.WrappedComponent != SkillFormComponent &&
+                                            <Col className="gutter-row" span={1} offset ={22}>
+                                                <Button type='text' 
+                                                        className='arrow-button' 
+                                                        onClick={this.handleCollapse}
+                                                        id = {item.id}>
+                                                    <DownOutlined />
+                                                </Button>
+                                            </Col>
+                                        }
                                         <this.props.component  
                                             data = {item.data} 
                                             key={item.id} 

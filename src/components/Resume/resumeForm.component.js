@@ -6,6 +6,7 @@ import PersonalDataFormComponent from './personalDataForm.component';
 import MultipleFormsComponent from './multipleForms.component';
 import ExperienceFormComponent from './experienceForm.component';
 import QualificationFormComponent from './qualificationForm.component';
+import SkillFormComponent from './skillForm.component';
 
 class ResumeFormComponent extends Component {
     
@@ -53,6 +54,15 @@ class ResumeFormComponent extends Component {
                       fluxStoreName = "qualification"
                       key="qualification"/>
             },
+            {
+              id: 4,
+              title: 'Skill',
+              content: <MultipleFormsComponent
+                        component = {SkillFormComponent}
+                        fluxStoreName = "skill"
+                        key="skill"/>
+              },
+            
         ];
 
         const { current } = this.state;
