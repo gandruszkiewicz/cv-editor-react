@@ -1,5 +1,5 @@
 export class Experience extends Object{
-    ExperienceId;
+    Id;
     CompanyName;
     Position;
     DateFrom;
@@ -10,7 +10,7 @@ export class Experience extends Object{
 
     constructor(){
         super()
-        this.ExperienceId = null;
+        this.Id = null;
         this.CompanyName = null;
         this.Position = null;
         this.DateFrom = null;

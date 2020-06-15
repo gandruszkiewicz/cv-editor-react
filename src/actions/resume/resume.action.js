@@ -2,36 +2,22 @@ import resumeService from '../../services/resume.service'
 import {resumeResult} from './resumeResult.action'
 import { alertActions } from './../alert.actions';
 import { spinActions } from '../spin/spin.action';
+import BasicActions from '../basic.actions';
 
 export const resumeActions = {
     addResume,
     updateStore
 }
 
+const basicActions = new BasicActions(resumeResult, resumeService);
+
 function updateStore(resume){
-    return dispatch => {
-        dispatch(resumeResult.updateStore({resume}));
-    }
+    return basicActions.updateStore(resume);
 }
 
 function addResume(resume){
-    return dispatch => {
-        dispatch(resumeResult.requestPost({resume}));
-        dispatch(spinActions.toggleSpin());
-        delete resume.ResumeId;
-        resumeService.addResume(resume)
-        .then(
-            response => {
-                dispatch(resumeResult.successPost({ resumeId: response.data }));
-                dispatch(spinActions.toggleSpin());
-                dispatch(alertActions.clear());
-            },
-            error =>{
-                dispatch(spinActions.toggleSpin());
-                dispatch(alertActions.error(error));
-            }
-        )
-    }
+    delete resume.ResumeId;
+    return basicActions.addObject(resume);
 }
 
 export default resumeActions;

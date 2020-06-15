@@ -9,11 +9,11 @@ const initState = new Resume(user.userId);
    export function resume(state = initState,action){
     switch (action.type) {
         case resumeConstants.RESUME_STORE_UPDATE:
-          return mapParametersToResume(action.parameters.resume);
+          return mapParametersToResume(action.parameters.modelObject);
         case resumeConstants.RESUME_POST_REQUEST:
-          return mapParametersToResume(action.parameters.resume);
+          return mapParametersToResume(action.parameters.modelObject);
         case resumeConstants.RESUME_POST_SUCCESS:
-            let resumeId = action.parameters.resumeId;
+            let resumeId = action.parameters.modelObject.Id;
             state.ResumeId = resumeId;
           return state;
         case resumeConstants.RESUME_POST_FAILURE:

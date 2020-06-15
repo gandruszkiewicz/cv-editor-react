@@ -9,10 +9,10 @@ axios.defaults.headers.common['Authorization'] = user
 const apiController = "resume";
 
 export const resumeService = {
-    addResume
+    addObject
 }
 
-function addResume(parameters){
+function addObject(parameters){
     let url = ApiRouter.getUrlForRequest(apiController);
     return postAuthentication(url, parameters);
 }

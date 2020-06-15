@@ -1,5 +1,5 @@
 export class Qualification extends Object{
-    QualificationId;
+    Id;
     SchoolName;
     FieldOfStudy;
     AcademicDegree;
@@ -10,7 +10,7 @@ export class Qualification extends Object{
 
     constructor(){
         super()
-        this.QualificationId = null;
+        this.Id = null;
         this.SchoolName = null;
         this.FieldOfStudy = null;
         this.AcademicDegree = null;

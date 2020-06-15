@@ -1,4 +1,8 @@
 export function mapper(targetObj, sourceObj) {
+    if(!sourceObj){
+        return null;
+    }
+    
     var targetProperties = Object.getOwnPropertyNames(targetObj);
     var sourceProperties = Object.getOwnPropertyNames(sourceObj);
 

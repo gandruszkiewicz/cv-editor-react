@@ -10,25 +10,23 @@ const initState = new Array();
     switch (action.type) {
         case qualificationConstants.QUALIFICATION_STORE_UPDATE:
           return AddReturnWithQualificatonId(
-            state,action.parameters.qualification);
+            state,action.parameters.modelObject);
 
         case qualificationConstants.QUALIFICATION_POST_REQUEST:
           return AddReturnWithQualificatonId(
-            state,action.parameters.qualification);
+            state,action.parameters.modelObject);
 
         case qualificationConstants.QUALIFICATION_POST_SUCCESS:
           return AddReturnWithQualificatonId(
-            state,action.parameters.qualification);
+            state,action.parameters.modelObject);
 
         case qualificationConstants.QUALIFICATION_POST_FAILURE:
           return {};
 
         case qualificationConstants.QUALIFICATION_DELETE_SUCCESS:
-          let filteredState = state
-            .filter(x => x.QualificationId !== action.parameters.qualificationId);
-          return {
-            filteredState
-          };
+          return state
+            .filter(
+              x => x.QualificationId !== action.parameters.Id);
 
         default:
           return state
@@ -37,6 +35,6 @@ const initState = new Array();
 
    function AddReturnWithQualificatonId(state, qualification){
     state = [...state,  mapper(new Qualification(), qualification)];
-    state = state.filter(x => x.QualificationId != null );
+    state = state.filter(x => x.Id != null );
     return state
    }

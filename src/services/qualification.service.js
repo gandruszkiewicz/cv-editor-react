@@ -9,16 +9,16 @@ axios.defaults.headers.common['Authorization'] = user
 const apiController = "qualification";
 
 export const qualificationService = {
-    addQualification,
-    deleteQualification
+    addObject,
+    deleteObject
 }
 
-function addQualification(parameters){
+function addObject(parameters){
     let url = ApiRouter.getUrlForRequest(apiController);
     return postRequest(url, parameters);
 }
 
-function deleteQualification(qualificationId){
+function deleteObject(qualificationId){
     let url = ApiRouter.getUrlForRequest(apiController);
     return deleteRequest(url,qualificationId)
 }

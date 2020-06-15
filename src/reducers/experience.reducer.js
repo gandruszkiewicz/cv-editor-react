@@ -10,22 +10,19 @@ const initState = new Array();
     switch (action.type) {
         case experienceConstants.EXPERIENCE_STORE_UPDATE:
           return AddReturnWithExperienceId(
-            state,action.parameters.experience);
+            state,action.parameters.modelObject);
 
         case experienceConstants.EXPERIENCE_POST_REQUEST:
           return AddReturnWithExperienceId(
-            state,action.parameters.experience);
+            state,action.parameters.modelObject);
 
         case experienceConstants.EXPERIENCE_POST_SUCCESS:
           return AddReturnWithExperienceId(
-            state,action.parameters.experience);
+            state,action.parameters.modelObject);
 
         case experienceConstants.EXPERIENCE_DELETE_SUCCESS:
-          let filteredState = state
-            .filter(x => x.ExperienceId !== action.parameters.experienceId);
-          return {
-            filteredState
-          };
+          return state
+          .filter(x => x.Id !== action.parameters.modelObject.Id);
 
         case experienceConstants.EXPERIENCE_POST_FAILURE:
           return {};
@@ -37,6 +34,6 @@ const initState = new Array();
 
    function AddReturnWithExperienceId(state, experience){      
       state = [...state, mapper(new Experience(),experience)];
-      state = state.filter(x => x.ExperienceId != null );
+      state = state.filter(x => x.Id != null );
       return state
    }
