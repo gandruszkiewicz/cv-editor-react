@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import { AuthenticationForm } from './AuthenticationForm';
+import { AuthenticationFormComponent } from './authenticationForm.component';
 import { connect } from 'react-redux';
 import { authenticationActions } from '../../actions/authentication/authentication.action'
-import AlertNotification from '../Alerts/AlertNotification'; 
 
 
 
-class RegistrationComponent extends Component{
+class RegistrationFormComponent extends Component{
     constructor(props){
         super(props);
 
@@ -20,11 +19,9 @@ class RegistrationComponent extends Component{
     }
 
     render(){
-        const errorMessage = this.props.state.alertReducer.error;
         return(
             <div>
-                <AlertNotification errorMessage = {errorMessage}/>
-                <AuthenticationForm 
+                <AuthenticationFormComponent 
                 onFinish ={this.handleFinish}
                 submitButtonValue = {"Register"}
                 displayRegister = {"hidden"}
@@ -41,4 +38,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps)(RegistrationComponent);
+export default connect(mapStateToProps)(RegistrationFormComponent);

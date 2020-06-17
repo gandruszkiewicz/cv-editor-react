@@ -1,23 +1,13 @@
-import React,{Component} from 'react';
-import {
-  Layout
- } from 'antd';
+import React from 'react';
+import { Layout } from 'antd';
 
-import MenuLayoutComponent  from './MenuLayoutComponent';
+import MenuLayoutComponent  from './menuLayout.component';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
-class LayoutComponent extends Component {
-    state = {
-        collapsed: false
-      };
-    
-      onCollapse = (collapsed) => {
-        this.setState({ collapsed });
-      };
-
-      render() {        
-        return (
+const LayoutComponent = (WrappedComponent) => {
+    return(props) => {
+      return (
         <Layout style={{ minHeight: '100vh' }}>
           <MenuLayoutComponent/>
           <Layout className="site-layout">
@@ -25,7 +15,7 @@ class LayoutComponent extends Component {
             </Header>
             <Content style={{ margin: '0 16px' }}>
               <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                Here goes choosed components
+                <WrappedComponent {...props}/>
               </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}></Footer>

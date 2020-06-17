@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 
-export class AuthenticationForm extends Component {
+export class AuthenticationFormComponent extends Component {
 
     state = {
         email: '',
@@ -21,7 +21,7 @@ export class AuthenticationForm extends Component {
     render(){
         return(
         <Row style={{'margin-top': '15%'}}>
-                <Col className='login-col'>
+                <Col className='centerized-col'>
                     <Form
                     className="login-form"
                     initialValues={{
@@ -81,4 +81,4 @@ export class AuthenticationForm extends Component {
         )
     }
 }
-export default AuthenticationForm;
+export default AuthenticationFormComponent;
