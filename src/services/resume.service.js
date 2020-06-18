@@ -9,20 +9,37 @@ axios.defaults.headers.common['Authorization'] = user
 const apiController = "resume";
 
 export const resumeService = {
-    addObject
+    addObject,
+    getQuantityByUser
 }
 
-function addObject(parameters){
+async function addObject(parameters){
+    await getQuantityByUser()
+        .then(response =>{
+            parameters.DocumentName = "CV"+ (Number(response.data) + 1);
+        })
     let url = ApiRouter.getUrlForRequest(apiController);
-    return postAuthentication(url, parameters);
+    return postRequest(url, parameters);
 }
 
+async function getQuantityByUser(){
+    let url = ApiRouter
+        .getUrlForRequest(apiController) 
+        + "/getQuantityByUser/" 
+        + user.userId;
 
-function postAuthentication(url,body){
+    return getRequest(url)
+}
+
+function postRequest(url,body){
     return axios.post(url,body,)
         .then(response =>{
             return response;
         });
+}
+
+function getRequest(url){
+    return axios.get(url);
 }
 
 export default resumeService;

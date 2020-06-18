@@ -11,6 +11,7 @@ export class Resume extends Object{
         super()
         this.ResumeId = null;
         this.UserId = userId;
+        this.DocumentName = null;
         this.FirstName = null;
         this.LastName = null;
         this.Email = null;
