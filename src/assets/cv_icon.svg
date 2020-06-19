@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="595" height="842" viewBox="0 0 595 842">
+    <defs>
+        <linearGradient id="a" x1="52.709%" x2="47.47%" y1="46.421%" y2="48.223%">
+            <stop offset="0%" stop-color="#EAEAEA"/>
+            <stop offset="95.105%" stop-color="#F4F4F4"/>
+        </linearGradient>
+        <linearGradient id="b" x1="64.632%" x2="35.368%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#FEFEFE"/>
+        </linearGradient>
+        <linearGradient id="c" x1="48%" x2="46.58%" y1="49.472%" y2="50.773%">
+            <stop offset="0%" stop-color="#373D48"/>
+            <stop offset="100%" stop-color="#535965"/>
+        </linearGradient>
+        <linearGradient id="d" x1="100%" x2="0%" y1="52.768%" y2="47.232%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="e" x1="3.849%" x2="98.036%" y1="48.154%" y2="51.921%">
+            <stop offset="0%" stop-color="#D7D7D7"/>
+            <stop offset="100%" stop-color="#C6C6C6"/>
+        </linearGradient>
+        <linearGradient id="f" x1="100%" x2="0%" y1="51.758%" y2="48.242%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="g" x1="100%" x2="0%" y1="53.894%" y2="46.106%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="h" x1="100%" x2="0%" y1="51.428%" y2="48.572%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="i" x1="100%" x2="0%" y1="50.692%" y2="49.308%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="j" x1="100%" x2="0%" y1="54.5%" y2="45.5%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="k" x1="100%" x2="0%" y1="50.909%" y2="49.091%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="l" x1="100%" x2="0%" y1="51.125%" y2="48.875%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="m" x1="100%" x2="0%" y1="50.413%" y2="49.587%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="n" x1="0%" y1="49.972%" y2="50.028%">
+            <stop offset="0%" stop-color="#989898"/>
+            <stop offset="100%" stop-color="#909090"/>
+        </linearGradient>
+        <linearGradient id="o" x1="100%" x2="0%" y1="52.525%" y2="47.475%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="p" x1="100%" x2="0%" y1="50.75%" y2="49.25%">
+            <stop offset="0%" stop-color="#BABABA"/>
+            <stop offset="100%" stop-color="#C9C9C9"/>
+            <stop offset="100%" stop-color="#C7C7C7"/>
+        </linearGradient>
+        <linearGradient id="q" x1="3.849%" x2="98.036%" y1="49.43%" y2="50.593%">
+            <stop offset="0%" stop-color="#D7D7D7"/>
+            <stop offset="100%" stop-color="#C6C6C6"/>
+        </linearGradient>
+        <linearGradient id="r" x1="3.849%" x2="98.036%" y1="49.041%" y2="50.998%">
+            <stop offset="0%" stop-color="#D7D7D7"/>
+            <stop offset="100%" stop-color="#C6C6C6"/>
+        </linearGradient>
+        <linearGradient id="s" x1="0%" x2="98.95%" y1="49.055%" y2="50.925%">
+            <stop offset="0%" stop-color="#DCD7D7"/>
+            <stop offset="100%" stop-color="#CBCBCB"/>
+        </linearGradient>
+        <linearGradient id="t" x1="0%" x2="98.95%" y1="49.491%" y2="50.499%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#E5E5E5"/>
+        </linearGradient>
+        <linearGradient id="u" x1="0%" x2="98.95%" y1="49.577%" y2="50.415%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#E5E5E5"/>
+        </linearGradient>
+        <linearGradient id="v" x1="0%" x2="98.95%" y1="48.993%" y2="50.986%">
+            <stop offset="0%" stop-color="#DCD7D7"/>
+            <stop offset="100%" stop-color="#CBCBCB"/>
+        </linearGradient>
+        <linearGradient id="w" x1="0%" x2="98.95%" y1="49.347%" y2="50.639%">
+            <stop offset="0%" stop-color="#E3DEDE"/>
+            <stop offset="100%" stop-color="#DEDEDE"/>
+        </linearGradient>
+        <linearGradient id="x" x1="0%" x2="98.95%" y1="49.111%" y2="50.87%">
+            <stop offset="0%" stop-color="#E3DEDE"/>
+            <stop offset="100%" stop-color="#DEDEDE"/>
+        </linearGradient>
+        <linearGradient id="y" x1="0%" x2="98.95%" y1="49.667%" y2="50.326%">
+            <stop offset="0%" stop-color="#E3DEDE"/>
+            <stop offset="100%" stop-color="#DEDEDE"/>
+        </linearGradient>
+        <linearGradient id="z" x1="0%" x2="98.95%" y1="49.954%" y2="50.045%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="A" x1="0%" x2="98.95%" y1="49.956%" y2="50.043%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="B" x1="0%" x2="98.95%" y1="49.945%" y2="50.054%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="C" x1="0%" x2="98.95%" y1="49.92%" y2="50.078%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="D" x1="0%" x2="98.95%" y1="48.924%" y2="51.053%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="E" x1="0%" x2="98.95%" y1="49.942%" y2="50.057%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="F" x1="0%" x2="98.95%" y1="49.902%" y2="50.096%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="G" x1="0%" x2="98.95%" y1="49.867%" y2="50.131%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="H" x1="0%" x2="98.95%" y1="49.911%" y2="50.088%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="I" x1="0%" x2="98.95%" y1="49.93%" y2="50.069%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="J" x1="0%" x2="98.95%" y1="49.951%" y2="50.048%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="K" x1="0%" x2="98.95%" y1="49.653%" y2="50.34%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="L" x1="0%" x2="98.95%" y1="49.236%" y2="50.748%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+        <linearGradient id="M" x1="0%" x2="98.95%" y1="49.6%" y2="50.391%">
+            <stop offset="0%" stop-color="#E9E6E6"/>
+            <stop offset="100%" stop-color="#E6E6E6"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="url(#a)" d="M416 73h179v769H416z"/>
+        <path fill="url(#b)" d="M0 73h416v769H0z"/>
+        <path fill="url(#c)" d="M0 0h595v74H0z"/>
+        <g opacity=".655" transform="translate(432 114)">
+            <rect width="51" height="12" y="27" fill="url(#d)" rx="2"/>
+            <rect width="80" height="16" fill="url(#e)" rx="2"/>
+            <rect width="64" height="12" y="78" fill="url(#f)" rx="2"/>
+            <rect width="43" height="12" y="119" fill="url(#g)" rx="2"/>
+            <rect width="71" height="12" y="160" fill="url(#h)" rx="2"/>
+            <rect width="102" height="12" y="241" fill="url(#i)" rx="2"/>
+            <rect width="40" height="12" y="257" fill="url(#j)" rx="2"/>
+            <rect width="89" height="12" y="273" fill="url(#k)" rx="2"/>
+            <rect width="80" height="12" y="289" fill="url(#l)" rx="2"/>
+            <rect width="132" height="12" y="305" fill="url(#m)" rx="2"/>
+            <rect width="102" height="12" y="321" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="416" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="453" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="490" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="527" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="633" fill="url(#i)" rx="2"/>
+            <rect width="102" height="12" y="672" fill="url(#i)" rx="2"/>
+            <rect width="127" height="3" y="434" fill="url(#n)" rx="1.5"/>
+            <rect width="127" height="3" y="471" fill="url(#n)" rx="1.5"/>
+            <rect width="127" height="3" y="508" fill="url(#n)" rx="1.5"/>
+            <rect width="127" height="3" y="545" fill="url(#n)" rx="1.5"/>
+            <rect width="127" height="3" y="651" fill="url(#n)" rx="1.5"/>
+            <rect width="127" height="3" y="690" fill="url(#n)" rx="1.5"/>
+            <rect width="89" height="20" y="45" fill="url(#o)" rx="2"/>
+            <rect width="132" height="12" y="96" fill="url(#m)" rx="2"/>
+            <rect width="98" height="12" y="137" fill="url(#p)" rx="2"/>
+            <rect width="80" height="16" y="214" fill="url(#e)" rx="2"/>
+            <rect width="144" height="16" y="389" fill="url(#q)" rx="2"/>
+            <rect width="111" height="16" y="604" fill="url(#r)" rx="2"/>
+        </g>
+        <rect width="160" height="22" x="23" y="178" fill="url(#s)" rx="2"/>
+        <rect width="218" height="22" x="23" y="15" fill="url(#t)" rx="2"/>
+        <rect width="163" height="15" x="23" y="45" fill="url(#u)" rx="2"/>
+        <rect width="155" height="22" x="23" y="509" fill="url(#v)" rx="2"/>
+        <rect width="155" height="22" x="23" y="699" fill="url(#v)" rx="2"/>
+        <rect width="140" height="16" x="23" y="230" fill="url(#w)" rx="2"/>
+        <rect width="120" height="16" x="23" y="549" fill="url(#x)" rx="2"/>
+        <rect width="196" height="16" x="23" y="360" fill="url(#y)" rx="2"/>
+        <rect width="362" height="11" x="23" y="94" fill="url(#z)" rx="2"/>
+        <rect width="369" height="11" x="23" y="109" fill="url(#A)" rx="2"/>
+        <rect width="331" height="11" x="53" y="279" fill="url(#B)" rx="2"/>
+        <rect width="275" height="11" x="53" y="582" fill="url(#C)" rx="2"/>
+        <rect width="331" height="11" x="53" y="409" fill="url(#B)" rx="2"/>
+        <rect width="331" height="11" x="53" y="738" fill="url(#B)" rx="2"/>
+        <rect width="75" height="11" x="53" y="296" fill="url(#D)" rx="2"/>
+        <rect width="323" height="11" x="53" y="599" fill="url(#E)" rx="2"/>
+        <rect width="249" height="11" x="53" y="318" fill="url(#F)" rx="2"/>
+        <rect width="213" height="11" x="53" y="621" fill="url(#G)" rx="2"/>
+        <rect width="260" height="11" x="53" y="643" fill="url(#H)" rx="2"/>
+        <rect width="294" height="11" x="53" y="431" fill="url(#I)" rx="2"/>
+        <rect width="294" height="11" x="53" y="760" fill="url(#I)" rx="2"/>
+        <rect width="249" height="11" x="53" y="453" fill="url(#F)" rx="2"/>
+        <rect width="353" height="11" x="23" y="124" fill="url(#J)" rx="2"/>
+        <rect width="132" height="11" x="23" y="139" fill="url(#K)" rx="2"/>
+        <rect width="89" height="11" x="23" y="253" fill="url(#L)" rx="2"/>
+        <rect width="123" height="11" x="23" y="383" fill="url(#M)" rx="2"/>
+        <circle cx="27" cy="284" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="587" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="414" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="743" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="324" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="627" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="649" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="437" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="766" r="2" fill="#5C5B5B"/>
+        <circle cx="27" cy="459" r="2" fill="#5C5B5B"/>
+    </g>
+</svg>

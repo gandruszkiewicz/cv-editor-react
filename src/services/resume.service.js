@@ -4,7 +4,6 @@ import ApiRouter from '../helpers/ApiRouter'
 const apiController = "resume";
 
 const user = JSON.parse(localStorage.getItem('currentUser')); 
-const axios = axiosConfig();
 
 export const resumeService = {
     addObject,
@@ -36,14 +35,14 @@ function getAllByUser(){
 }
 
 function postRequest(url,body){
-    return axios.post(url,body,)
+    return axiosConfig().post(url,body,)
         .then(response =>{
             return response;
         });
 }
 
 function getRequest(url){
-    return axios.get(url)
+    return axiosConfig().get(url)
         .then(response => {
             return response;
         })

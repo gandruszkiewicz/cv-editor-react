@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col} from 'antd';
 import resumeActions from '../../../actions/resume/resume.action';
 import {connect} from 'react-redux';
+import ReadUpdateResume from './readUpdateResume.component';
 
 class ReadUserResumes extends Component{
     constructor(props){
@@ -21,9 +22,11 @@ class ReadUserResumes extends Component{
             <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
                 {resumes &&
                         resumes.map(resume => (
-                            <Col className="gutter-row" span={6}>
-                                UserId : {resume.userId}
-                                Name: {resume.documentName}
+                            <Col 
+                                className="gutter-row" 
+                                span={6} 
+                                >
+                                <ReadUpdateResume resume = {resume} key ={resume.Id}/>
                             </Col>
                     ))
                 }
