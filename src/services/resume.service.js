@@ -24,11 +24,9 @@ async function addObject(parameters){
 
 async function getQuantityByUser(){
     let url = ApiRouter
-        .getUrlForRequest(apiController) 
-        + "/getQuantityByUser/" 
-        + user.userId;
+        .getUrlForRequest(apiController);
 
-    return getRequest(url)
+    return getRequest(url + "/getQuantityByUser/" + user.userId)
 }
 
 function postRequest(url,body){
