@@ -38,7 +38,6 @@ class MenuLayoutComponent extends Component {
                             Add Resume
                         </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="setting:2">Your resumes</Menu.Item>
                 </SubMenu>
                 <Menu.Item 
                     key="1" 

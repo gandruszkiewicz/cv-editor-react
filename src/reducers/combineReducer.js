@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { authentication } from './authentication.reducer';
 import { alertReducer } from './alert.reducer';
 import { resume } from './resume.reducer';
+import { userResumes } from './userResumes.reducer';
 import { experience } from './experience.reducer';
 import { qualification } from './qualification.reducer';
 import { skill } from './skill.reducer'
@@ -14,6 +15,7 @@ const combineReducer = combineReducers({
     authentication,
     alertReducer,
     resume,
+    userResumes,
     experience,
     qualification,
     skill,

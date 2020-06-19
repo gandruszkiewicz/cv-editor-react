@@ -64,11 +64,10 @@ export class MultipleFormsComponent extends Component {
     }
 
     handleDelete(e){
-            
         this.setState({
             components: this.state.components
-                            .filter(
-                                x => x.id !== Number(e.currentTarget.id))
+                .filter(
+                    x => x.id !== Number(e.currentTarget.id))
         })
     }
 

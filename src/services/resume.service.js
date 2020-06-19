@@ -1,16 +1,15 @@
-import axios from 'axios'
+import axiosConfig from './axios.config'
 import ApiRouter from '../helpers/ApiRouter'
-
-const user = JSON.parse(localStorage.getItem('currentUser')); 
-axios.defaults.headers.common['Authorization'] = user 
-    ? "bearer "+ user.token
-    : null;
     
 const apiController = "resume";
 
+const user = JSON.parse(localStorage.getItem('currentUser')); 
+const axios = axiosConfig();
+
 export const resumeService = {
     addObject,
-    getQuantityByUser
+    getQuantityByUser,
+    getAllByUser
 }
 
 async function addObject(parameters){
@@ -26,7 +25,14 @@ async function getQuantityByUser(){
     let url = ApiRouter
         .getUrlForRequest(apiController);
 
-    return getRequest(url + "/getQuantityByUser/" + user.userId)
+    return getRequest(url + "/getQuantityByUser/" + user?.userId)
+}
+
+function getAllByUser(){
+    let url = ApiRouter
+    .getUrlForRequest(apiController);
+    let user = JSON.parse(localStorage.getItem('currentUser')); 
+    return getRequest(url +'?userId='+ user?.userId);
 }
 
 function postRequest(url,body){
@@ -37,7 +43,10 @@ function postRequest(url,body){
 }
 
 function getRequest(url){
-    return axios.get(url);
+    return axios.get(url)
+        .then(response => {
+            return response;
+        })
 }
 
 export default resumeService;

@@ -1,9 +1,12 @@
+import React from 'react';
 import LayoutComponent from './layout.component';
+import ReadUserResumes from '../Resume/Read/readUserResumes.component'
+
 
 const HomeComponent = () => {
 
         return(
-           null
+           <ReadUserResumes/>
         )
 }
 
