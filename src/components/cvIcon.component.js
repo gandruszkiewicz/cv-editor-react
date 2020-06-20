@@ -4,7 +4,7 @@ import React from 'react';
 const CvIconComponent = () => {
 
     return(
-        <img src = {cvIcon} style = {Object.assign({height: '60%'},{width: '100%'})}/>
+        <img src = {cvIcon} width= {'50%'}/>
     )
 }
 

@@ -2,23 +2,37 @@ import React, { Component } from 'react';
 import { EditOutlined} from '@ant-design/icons';
 import cvicon from '../../../assets/cv_icon.svg'
 import CvIconComponent from '../../cvIcon.component';
-import { Card, Input } from 'antd';
+import { Card, Input, Button, Col, Row } from 'antd';
+import {NavLink} from 'react-router-dom'
 
 
 export class ReadUpdateResume extends Component {
+
+  handleButtonClick(){
+    console.log('Clicked')
+  }
+
+  handleDocumentNameUpdate(){
+    console.log('Document name updated!')
+  }
+
   render(){
     return (
+      <div>
+        <Input onPressEnter={this.handleDocumentNameUpdate} defaultValue = "lorem" style = {Object.assign({border:'none'}, {marginTop: '5%'})}/>            
         <Card
             hoverable
-            style = {Object.assign({width: '100%'},{height: '100%'}, {marginTop: '5%'})}
-            cover = {<CvIconComponent/>}
+            cover = {<img src= {cvicon} />}
+            style = {Object.assign({width: 240})}
             actions={[
-              <EditOutlined key="edit" />,
+              <NavLink to="/edit-resume">
+                <EditOutlined key="edit" />
+              </NavLink>
             ]}
+            bodyStyle ={{display: 'none'}}
           >
-          <Input defaultValue = "lorem" style = {Object.assign({border:'none'})}/>
-            
         </Card>
+      </div>
     );
   }
 }
