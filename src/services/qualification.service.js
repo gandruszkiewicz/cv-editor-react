@@ -1,10 +1,8 @@
-import axios from 'axios'
+import axiosConfig from './axios.config'
 import ApiRouter from '../helpers/ApiRouter'
 
 const user = JSON.parse(localStorage.getItem('currentUser')); 
-axios.defaults.headers.common['Authorization'] = user 
-    ? "bearer "+ user.token
-    : null;
+const axios = axiosConfig();
     
 const apiController = "qualification";
 

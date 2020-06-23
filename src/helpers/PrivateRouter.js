@@ -8,14 +8,21 @@ const PrivateRouter = ({component: Component, ...rest}) =>(
 
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-        let isUserExist = currentUser == null 
-            ? false 
-            : authenticationService.checkIfUserExist(currentUser.userId)
-                .then(response =>{
-                    isUserExist = response.data;
-                })
+        const isUserLogged = () => {
+            let result = false;
+            authenticationService.checkIfUserExist(currentUser?.userId)
+                .then(
+                    response =>{
+                        result =  response.data
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                )
+            return result;
+        }
 
-        if(!isUserExist){
+        if(!isUserLogged){
             return (
                 <Redirect to ={{ pathname: '/login', state: {from: props.location} }}/>
             ) 

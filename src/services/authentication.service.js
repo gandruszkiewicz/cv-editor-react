@@ -1,5 +1,6 @@
 import axios from 'axios'
 import ApiRouter from '../helpers/ApiRouter'
+import axiosConfig from './axios.config';
 
 
 const apiController = "identity";
@@ -22,6 +23,7 @@ function register(email, password){
 
 function checkIfUserExist(userid){
     let url = ApiRouter.getUrlForRequest(apiController,'usercheck?userId='+userid)
+    let axios = axiosConfig();
     return axios.get(url)
         .then(response => {
             return response;

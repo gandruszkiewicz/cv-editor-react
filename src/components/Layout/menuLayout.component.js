@@ -31,14 +31,12 @@ class MenuLayoutComponent extends Component {
     return (
         <>
             <Menu onClick={this.handleClick} mode="horizontal">
-                <SubMenu onHover = {this.handleMenuClick}  icon={<MenuOutlined />} title="Menu" style = {{'margin-left': '1%'}}>
-
+                <SubMenu onHover = {this.handleMenuClick}  icon={<MenuOutlined/>} title="Menu" style = {{'margin-left': '1%'}}>
                     <Menu.Item key="setting:1">
                         <NavLink to="/add-resume">
                             Add Resume
                         </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="setting:2">Your resumes</Menu.Item>
                 </SubMenu>
                 <Menu.Item 
                     key="1" 

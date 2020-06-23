@@ -4,7 +4,7 @@ import mapper from '../helpers/mapper';
 
 const user = JSON.parse(localStorage.getItem('currentUser'));
 
-const initState = new Resume(user.userId);
+const initState = new Resume(user?.userId);
 
    export function resume(state = initState,action){
     switch (action.type) {

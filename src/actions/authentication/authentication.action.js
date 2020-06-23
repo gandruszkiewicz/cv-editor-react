@@ -60,6 +60,6 @@ function logout(){
     return dispatch => {
         dispatch(authenticationResult.logOut());
         localStorage.removeItem('currentUser');
-        history.push('/');
+        history.push('/login');
     };
 }
