@@ -49,23 +49,24 @@ export class ReadUpdateResume extends Component {
             cover = {<img src= {cvicon} />}
             style = {Object.assign({width: 240})}
             actions={[
-              <NavLink to="/edit-resume">
-                <EditOutlined key="edit" style ={Object.assign({float:'left'}, {marginLeft: '20%'}, {fontSize: 'larger'})}/>
-                <DeleteOutlined key="delete" style ={Object.assign({float:'right'}, {marginRight: '20%'}, {fontSize: 'larger'})}/>
-                <DownloadOutlined key="download" style ={Object.assign({float:'right'}, {marginRight: '20%'}, {fontSize: 'larger'})}/>
-              </NavLink>
+              <div>
+                <NavLink to={`/edit-resume/${this.props.id}`}>
+                    <EditOutlined key="edit" className='resume-card-action float-left'/>
+                </NavLink>
+                <DownloadOutlined key="download" className='resume-card-action float-left' style ={{marginRight: '5%'}}/>
+                <DeleteOutlined key="delete" className='resume-card-action float-left'/>
+              </div>
             ]}
           >
             <Tooltip title="Press enter to save" className ="primary">
-              <Input onPressEnter={this.handleDocumentNameUpdate}
+              <Input className = 'document-name-input' onPressEnter={this.handleDocumentNameUpdate}
                 ref = {(input) => {this.documentName = input}} 
                 defaultValue = {this.props.resume.documentName}
-                style = {Object.assign({border:'none'},{width: '70%'},{fontWeight: 'bold'})}/>  
+                />  
             </Tooltip> 
             <Dropdown overlay={menu}>
               <a className="ant-dropdown-link" onClick={this.handleButtonClick}>
-                  <DashOutlined style = 
-                    {Object.assign({transform: 'rotate(90deg)'}, {float: 'right'})}
+                  <DashOutlined style = {{float: 'right'}}
                     className = 'menu-icon' />
               </a>
             </Dropdown>

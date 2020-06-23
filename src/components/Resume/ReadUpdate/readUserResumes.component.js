@@ -19,17 +19,17 @@ class ReadUserResumes extends Component{
     const resumes = this.props.state.userResumes;
     return(
         <>
-            <div style = {{display:'flex',flex_wrap:'wrap'}}>
-            <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
-                {resumes &&
-                        resumes.map(resume => (
-                            <div style ={{marginRight:'10%'}}>
-                                <ReadUpdateResume resume = {resume} key ={resume.Id} id = {resume.id}/>
-                            </div>
-                            
-                    ))
-                }
-            </Row>
+            <div className ='read-resumes-template'>
+                <Row gutter={{xs: 8, sm: 16, md: 24, lg:32 }}>
+                    {resumes &&
+                            resumes.map(resume => (
+                                <div style ={{marginRight:'10%'}}>
+                                    <ReadUpdateResume resume = {resume} key ={resume.Id} id = {resume.id}/>
+                                </div>
+                                
+                        ))
+                    }
+                </Row>
             </div>
         </>
     )

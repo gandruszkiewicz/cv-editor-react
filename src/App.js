@@ -45,6 +45,7 @@ class App extends Component {
             <Route exact path='/login' component={LoginFormComponent}/>
             <Route exact path='/register' component={RegistrationFormComponent}/>
             <PrivateRouter exact path='/add-resume' component = {ResumeFormComponent}/>
+            <PrivateRouter exact path='/edit-resume/:resumeId' component = {ResumeFormComponent}/>
           </Router>
         </div>
       </Spin>
