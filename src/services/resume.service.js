@@ -8,6 +8,7 @@ const user = JSON.parse(localStorage.getItem('currentUser'));
 export const resumeService = {
     addObject,
     getQuantityByUser,
+    getByResumeId,
     getAllByUser
 }
 
@@ -25,6 +26,12 @@ async function getQuantityByUser(){
         .getUrlForRequest(apiController);
 
     return getRequest(url + "/getQuantityByUser/" + user?.userId)
+}
+
+function getByResumeId(resumeId){
+    let url = ApiRouter
+    .getUrlForRequest(apiController);
+    return getRequest(url+"/"+resumeId)
 }
 
 function getAllByUser(){

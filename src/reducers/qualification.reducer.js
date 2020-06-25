@@ -1,4 +1,6 @@
 import { qualificationConstants } from '../constants/qualification.constants';
+import { resumeConstants } from '../constants/resume.constants';
+import {resumeComponentsConstants} from '../constants/resumeComponents.constants'
 import mapper from '../helpers/mapper';
 import Qualification from '../model/qualification';
 
@@ -27,6 +29,12 @@ const initState = new Array();
           return state
             .filter(
               x => x.QualificationId !== action.parameters.Id);
+
+        case resumeConstants.RESUME_GET_BYID:
+          return action.parameters.qualifications;
+
+        case resumeComponentsConstants.CLEAR_STORES:
+          return new Array();
 
         default:
           return state

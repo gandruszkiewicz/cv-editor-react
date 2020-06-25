@@ -1,4 +1,5 @@
 import { resumeConstants } from '../constants/resume.constants';
+import {resumeComponentsConstants} from '../constants/resumeComponents.constants'
 import Resume from '../model/resume';
 import mapper from '../helpers/mapper';
 
@@ -18,10 +19,20 @@ const initState = new Resume(user?.userId);
           return state;
         case resumeConstants.RESUME_POST_FAILURE:
           return {};
+
+        case resumeComponentsConstants.CLEAR_STORES:
+          return new Resume(user?.userId);
+
+        case resumeConstants.RESUME_GET_BYID:
+          var mappedProp = {"id":"resumeId"};
+          var mappedResume = mapParametersToResume(action.parameters, mappedProp);
+          state = mappedResume;
+          return state;
+
         default:
           return state
     } 
 }
-function mapParametersToResume(resume){
-  return mapper(new Resume(null),resume);
+function mapParametersToResume(resume, mappedProp = null){
+  return mapper(new Resume(null),resume,mappedProp);
 }

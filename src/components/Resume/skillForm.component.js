@@ -86,7 +86,7 @@ export class SkillFormComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="Name"
-                                    initialValue = {skill?.Name}
+                                    initialValue = {skill?.name}
                                     rules={[
                                     {
                                         required: true,
@@ -110,7 +110,7 @@ export class SkillFormComponent extends Component {
                                     },
                                     ]}
                                 >
-                                    <Rate defaultValue = {skill?.SkillLevel} count = {3} onChange = {this.handleSkillLevelChange}/>
+                                    <Rate defaultValue = {skill?.skillLevel} count = {3} onChange = {this.handleSkillLevelChange}/>
                                     
                                 </Form.Item>
                         </Col>
@@ -120,7 +120,7 @@ export class SkillFormComponent extends Component {
                             <Form.Item
                                     onChange = {this.handleChange}
                                     name="Description"
-                                    initialValue = {skill?.Description}
+                                    initialValue = {skill?.description}
                                     rules={[
                                     {
                                         required: true,

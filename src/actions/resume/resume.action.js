@@ -7,7 +7,8 @@ import BasicActions from '../basic.actions';
 export const resumeActions = {
     addResume,
     updateStore,
-    readUserResumes
+    readUserResumes,
+    getById
 }
 
 const basicActions = new BasicActions(resumeResult, resumeService);
@@ -19,6 +20,21 @@ function updateStore(resume){
 function addResume(resume){
     delete resume.ResumeId;
     return basicActions.addObject(resume);
+}
+
+function getById(resumeId){
+    return dispatch =>{
+        dispatch(spinActions.toggleSpin());
+        resumeService.getByResumeId(resumeId)
+            .then(response =>{
+                dispatch(resumeResult.getByResumeId(response.data))
+            },
+            error => {
+                dispatch(alertActions.error(error));
+            })
+
+        dispatch(spinActions.toggleSpin());
+    }
 }
 
 function readUserResumes(){

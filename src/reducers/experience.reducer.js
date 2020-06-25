@@ -1,6 +1,8 @@
 import { experienceConstants } from '../constants/experience.constants';
+import { resumeConstants } from '../constants/resume.constants';
 import Experience from '../model/experience';
 import mapper from '../helpers/mapper';
+import { resumeComponentsConstants } from '../constants/resumeComponents.constants';
 
 
 // Array of '../model/experience' objects
@@ -23,6 +25,12 @@ const initState = new Array();
         case experienceConstants.EXPERIENCE_DELETE_SUCCESS:
           return state
           .filter(x => x.Id !== action.parameters.modelObject.Id);
+
+        case resumeConstants.RESUME_GET_BYID:
+          return action.parameters.experiences;
+
+        case resumeComponentsConstants.CLEAR_STORES:
+          return new Array();
 
         case experienceConstants.EXPERIENCE_POST_FAILURE:
           return {};

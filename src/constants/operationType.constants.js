@@ -1,0 +1,4 @@
+export const operationTypeConstants = {
+    OPERATION_TYPE_EDIT: 'OPERATION_TYPE_EDIT',
+    OPERATION_TYPE_ADD: 'OPERATION_TYPE_ADD'
+};

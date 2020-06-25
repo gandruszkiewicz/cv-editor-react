@@ -7,14 +7,41 @@ import MultipleFormsComponent from './multipleForms.component';
 import ExperienceFormComponent from './experienceForm.component';
 import QualificationFormComponent from './qualificationForm.component';
 import SkillFormComponent from './skillForm.component';
+import { operationTypeActions } from '../../actions/operationType.actions'
+import {operationTypesEnum} from '../../helpers/operationTypesEnum'
+import resumeActions from '../../actions/resume/resume.action';
+import { resumeComponentsActions } from '../../actions/resumeComponents/resumeComponents.actions';
 
 class ResumeFormComponent extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-          current: 0,
-        };
+        this.initState();
+      }
+
+      initState(){
+        let pathName = window.location.pathname;
+        const { dispatch } = this.props;
+
+        switch(pathName){
+
+          case pathName.match(/edit-resume/)?.input:
+            dispatch(operationTypeActions.changeToEdit())
+            dispatch(resumeActions.getById(this.props.match.params.resumeId))
+            this.state = {
+              current: 0,
+              operationType: operationTypesEnum.EDIT
+            };
+            
+            return;
+
+          default:
+            dispatch(operationTypeActions.changeToAdd())
+            this.state = {
+              current: 0,
+              operationType: operationTypesEnum.ADD
+            };
+        }
       }
 
       next() {
@@ -28,14 +55,13 @@ class ResumeFormComponent extends Component {
       }
 
     render(){
-
         const { Step } = Steps;
         const steps = [
             {
             id:1,
             title: 'Personal data',
             content: <PersonalDataFormComponent
-                        state = {this.props.state.resume}
+                        resume = {this.props.state.resume}
                         key = {"resume"}/>,
             },
             {

@@ -4,13 +4,16 @@ import { MenuOutlined, LogoutOutlined } from '@ant-design/icons';
 import { authenticationActions } from '../../actions/authentication/authentication.action';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import { resumeComponentsActions } from '../../actions/resumeComponents/resumeComponents.actions';
+import history from '../../helpers/history';
 
 const { SubMenu } = Menu;
 
 class MenuLayoutComponent extends Component {
     constructor(props){
         super(props)
-        this.handleClickLogout = this.handleClickLogout.bind(this)
+        this.handleClickLogout = this.handleClickLogout.bind(this);
+        this.handleClickAddResume = this.handleClickAddResume.bind(this);
         }
 
   handleClick = e => {
@@ -26,16 +29,20 @@ class MenuLayoutComponent extends Component {
     dispatch(authenticationActions.logout());
   }
 
+  handleClickAddResume(e){
+    const {dispatch} = this.props;
+    dispatch(resumeComponentsActions.clearStores());
+    history.push("/add-resume")
+  }
+
   render() {
 
     return (
         <>
             <Menu onClick={this.handleClick} mode="horizontal">
                 <SubMenu onHover = {this.handleMenuClick}  icon={<MenuOutlined/>} title="Menu" style = {{'margin-left': '1%'}}>
-                    <Menu.Item key="setting:1">
-                        <NavLink to="/add-resume">
+                    <Menu.Item key="setting:1" onClick = {this.handleClickAddResume}>
                             Add Resume
-                        </NavLink>
                     </Menu.Item>
                 </SubMenu>
                 <Menu.Item 

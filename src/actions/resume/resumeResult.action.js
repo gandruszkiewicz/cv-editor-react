@@ -7,7 +7,8 @@ export const resumeResult = {
 
     updateStore,
 
-    userResumesGet
+    userResumesGet,
+    getByResumeId
 }
 
 function updateStore(parameters) { return { type: resumeConstants.RESUME_STORE_UPDATE, parameters }}
@@ -16,3 +17,4 @@ function successPost(parameters) { return { type: resumeConstants.RESUME_POST_SU
 function failurePost(error) { return { type: resumeConstants.RESUME_POST_FAILURE, error } }
 
 function userResumesGet(parameters) { return { type: resumeConstants.USER_RESUMES_GET, parameters }}
+function getByResumeId(parameters) {return {type: resumeConstants.RESUME_GET_BYID, parameters }}

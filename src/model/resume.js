@@ -1,22 +1,22 @@
 export class Resume extends Object{
-    ResumeId;
-    UserId;
-    FirstName;
-    LastName;
-    Email;
-    Address;
-    SumUp;
+    resumeId;
+    userId;
+    firstName;
+    lastName;
+    email;
+    address;
+    sumUp;
 
     constructor(userId){
         super()
-        this.ResumeId = null;
-        this.UserId = userId;
-        this.DocumentName = null;
-        this.FirstName = null;
-        this.LastName = null;
-        this.Email = null;
-        this.Address = null;
-        this.SumUp = null;
+        this.resumeId = null;
+        this.userId = userId;
+        this.documentName = null;
+        this.firstName = null;
+        this.lastName = null;
+        this.email = null;
+        this.address = null;
+        this.sumUp = null;
     }
 }
 

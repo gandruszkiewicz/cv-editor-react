@@ -10,6 +10,7 @@ import { skill } from './skill.reducer'
 import { rootConstants } from '../constants/root.constants';
 import { authenticationConstants } from '../constants/authentication.constants';
 import { spin } from './spin.reducer';
+import {operationType} from './operationType.reducer'
 
 const combineReducer = combineReducers({
     authentication,
@@ -19,7 +20,8 @@ const combineReducer = combineReducers({
     experience,
     qualification,
     skill,
-    spin
+    spin,
+    operationType
 })
 const storeClearingActions = [
     authenticationConstants.LOGOUT,
